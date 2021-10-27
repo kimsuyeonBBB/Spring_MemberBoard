@@ -1,0 +1,133 @@
+﻿.video_wrap .screen_wrap {
+	text-align:center;
+}
+.video_wrap .screen_wrap .screen-controller-tb{
+	height:100%;
+}
+.video_wrap .screen_wrap .screen-controller-tb .btn-moving{
+	width:27px;
+	height:27px;
+	margin-right:5px;
+	border: 1px solid #dbdbdb;
+	border-radius:1px;
+	background-image: url("images/list-settings-line.png");
+	background-repeat: no-repeat;
+	background-position:auto;
+	background-size:25px
+}
+.video_wrap .screen_wrap .screen-controller-tb .btn-list{
+	width:27px;
+	height:27px;
+	border: 1px solid #dbdbdb;
+	border-radius:1px;
+	background-image: url("images/function-fill.png");
+	background-repeat: no-repeat;
+	background-position:auto;
+	background-size:25px;
+}
+.video_wrap .screen_wrap .video_controller {
+	padding:0px;
+	height:35px;
+	background-color:#f4f4f4;
+	vertical-align:top;
+}
+.video_wrap .screen_wrap .video_controller select{
+	width:80%;
+}
+
+.video_wrap .screen_wrap .video_controller .selected{
+	background-color:#ff8401;
+	color:#fff;
+}
+.video_wrap .screen_wrap .video_player {
+	vertical-align:middle;
+	text-align:center;
+}
+.video_wrap .list_wrap .list-controller {
+	padding:0px;
+	height:35px;
+	background-color:#f4f4f4;
+}
+.video_wrap .list_wrap .list-controller span{
+	font-size:11px;
+	font-stretch:narrower;
+}
+.video_wrap .list_wrap .list-controller .selected {
+	background-color:#ff8401;
+	color:#fff;
+}
+.video_wrap .btn{
+	border:1px solid #ccc;
+	border-radius:5px;
+	margin:0px;
+	padding:0px;
+	float:left;
+	font-size:11px;
+	height:25px;
+	width:45px;
+}
+
+.list_wrap .btn-criteria {
+	width:28px;
+	height:28px;
+	background-color:#cfcfca;
+	border-radius:1px;
+	background-image: url("images/terminal-window-fill.png");
+	background-repeat: no-repeat;
+	background-position:auto;
+	background-size:26px
+}
+
+.video_wrap select {
+	border:1px solid #ccc;
+	height:25px;
+}
+.video_wrap .btn-videoType {
+	margin-left:2px;
+	margin-right:2px;
+	float:right;
+}
+.video_wrap .player-list {
+	font-size:12px;
+	font-weight:bolder;
+	text-align:center;
+}
+.video_wrap .player-list td {
+	padding:0px;
+}
+.video_wrap .clip_list {
+	width:100%;
+}
+.video_wrap .clip_list .title-single > span.game-info{
+	color:#ff8900;
+}
+.video_wrap .clip_list .title-single > span.player-info{
+	color:#000;
+	text-decoration:underline;
+}
+.video_wrap .clip_list td {
+	height:25px;
+	border-top:0px solid #ededed;
+	border-left:0px solid #ededed;
+	border-bottom:0px solid #ededed;
+	border-right:1px solid #ededed;
+}
+.video_wrap .disable {
+	background-color:#ededed;
+}
+.video_wrap table.active {
+	background-color:#ffc20c;
+}
+
+.playing-type-label {
+	display:inline-block; 
+	font-size:10px; 
+	height:100%;
+}
+.playing-type-label input {
+	vertical-align:middle;
+}
+.playing-type-label label {
+	margin:0px;
+	vertical-align:middle;
+}

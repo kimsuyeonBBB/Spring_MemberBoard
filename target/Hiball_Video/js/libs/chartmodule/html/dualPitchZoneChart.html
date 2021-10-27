@@ -1,0 +1,63 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-4 col-md-4 text-center">
+			<%=playerName%>
+			<%if (position=='batter'){%>타자<%} else if (position=='pitcher'){%>투수<%}%>에 대한 심판 판정
+		</div>
+		
+		<div class="col-sm-4 col-sm-offset-4 col-md-offset-4 col-md-4 text-center">
+			전체<%if (pitchingHand=='L' && position=='batter'){%> 좌타자<%}
+				else if (pitchingHand=='R' && position=='batter'){%> 우타자<%}
+				else if (pitchingHand=='L' && position=='pitcher'){%>좌완 투수<%}
+				else if (pitchingHand=='R' && position=='pitcher'){%>우완 투수<%}
+				else if (pitchingHand=='' && position=='batter'){%> 팀 타자<%}
+				else if (pitchingHand=='' && position=='pitcher'){%> 팀 투수<%} %>에 대한 심판 판정
+		</div>
+	</div>
+	<div class="row">
+		<div id="pitchZoneChart" class="col-sm-4 col-md-4">
+		</div>
+		<div class="col-sm-4 col-md-4">
+			<div class="row" id="summaryList">
+				
+			</div>
+			<div class="row">
+				<table class="categoryList" align="center">
+					<tr>
+						<th colspan="4" class="text-center">선택된 Zone 의 S/B 판정비율</th>
+					</tr>
+					<tr>
+						<td colspan="4" align="center" class="notactive oncursor" id="wholeDisplay">전체</td>
+					</tr>
+					<tr>
+						<th colspan="2" class="text-center">
+							<%=playerName%> <%if (position=='batter'){%>타자<%} else if (position=='batter'){%>투수<%}%>
+						</th>
+						<th colspan="2" class="text-center">
+						전체<%if (pitchingHand=='L' && position=='batter'){%> 좌타자<%}
+						else if (pitchingHand=='R' && position=='batter'){%> 우타자<%}
+						else if (pitchingHand=='L' && position=='pitcher'){%>좌완 투수<%}
+						else if (pitchingHand=='R' && position=='pitcher'){%>우완 투수<%}
+						else if (pitchingHand==null && position=='batter'){%> 팀 타자<%}
+						else if (pitchingHand==null && position=='pitcher'){%> 팀 투수<%} %>
+						</th>
+					</tr>
+					<tr>
+						<th width="25%" class="text-center">S 판정</th>
+						<th width="25%" class="text-center">B 판정</th>
+						<th width="25%" class="text-center">S 판정</th>
+						<th width="25%" class="text-center">B 판정</th>
+					</tr>
+					<tr>
+						<td align="center" name="sZoneVal" id="playerS">&nbsp;</td>
+						<td align="center" name="sZoneVal" id="playerB">&nbsp;</td>
+						<td align="center" name="sZoneVal" id="allS">&nbsp;</td>
+						<td align="center" name="sZoneVal" id="allB">&nbsp;</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div id="allPlayerPitchZoneChart" class="col-sm-4 col-md-4"></div>
+	</div>
+
+</div>

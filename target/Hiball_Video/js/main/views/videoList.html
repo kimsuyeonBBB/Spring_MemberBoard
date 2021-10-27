@@ -1,0 +1,42 @@
+<div id="videoWrapper" class="row video_wrap" style="margin:5px; padding:0px;">
+	<div class="col-12 col-sm-8 col-md-12 col-lg-12 col-xl-12 screen_wrap" style="padding:0px;">
+		<table>
+			<tr>
+				<table class="video_controller">
+					<tr>
+						<td>
+							<button id="returnCriteria" style="font-size:15px; font-weight:bolder;">
+								&lt;
+							</button>
+						</td>
+						<td id="playVideoBtn">
+							출력 영상 버튼 집합
+						</td>
+						<td>
+							<select id="videoCate">
+								<option>영상리스트</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+			</tr>
+			<tr>
+				<td>
+					<video id="videoPlayer" width="100%" poster="assets/images/main_logo.png" controls>
+						<source id="clip_source">
+					</video>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="col-12 col-sm-4 col-md-12 col-lg-12 col-xl-12 list_wrap" style="padding:0px;">
+		<table>
+			<tr>
+				<td id="listFilter">영상 정보</td>
+			</tr>
+			<tr>
+				<td id="clipList">재생 목록</td>
+			</tr>
+		</table>
+	</div>
+</div>

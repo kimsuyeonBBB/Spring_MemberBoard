@@ -1,0 +1,62 @@
+<div class="view_left">
+	<div class="txt_list">
+		<strong>총투구수:</strong><span id="tableDetail">844</span>
+		<strong>조건:</strong><span>전체</span>
+		<strong>투구:</strong><span>비율</span>
+	</div>
+	<%if(battingHand == 'L'){ %>
+	<div class="ico_manl on">
+		<div class="txt">좌타</div>
+	</div>
+	<%}else{%>
+	<div class="ico_manl">
+		<div class="txt">좌타</div>
+	</div>
+	<% } %>
+	<div id="pitchZoneChart" class="pitchZoneSprayWrapper view_tbl">
+	
+	</div>
+	<%if(battingHand == 'R'){ %>
+	<div class="ico_manr on">
+		<div class="txt">우타</div>
+	</div>
+	<%}else{%>
+	<div class="ico_manr">
+		<div class="txt">우타</div>
+	</div>
+	<%} %>
+</div>
+<div class="view_center">
+	<div class="box_tbl">
+		<table>
+			<tr>
+				<th>타자</th>
+				<td class="bdrrn" id="detailBatterName"></td>
+			</tr>
+			<tr>
+				<th>투수</th>
+				<td class="bdrrn" id="detailPitcherName"></td>
+			</tr>
+			<tr>
+				<th>구속</th>
+				<td class="bdrrn" id="ballSpeed"></td>
+			</tr>
+			<tr>
+				<th>구종</th>
+				<td class="bdrrn" id="ballType"></td>
+			</tr>
+			<tr>
+				<th>타격결과</th>
+				<td class="bdrrn" id="hitResult"></td>
+			</tr>
+			<tr>
+				<th>주자상황</th>
+				<td class="bdrrn" id="runnerStatus"></td>
+			</tr>
+		</table>
+	</div>
+
+</div>
+<div class="view_right align-c" id="hitCourseZoneChart">
+	
+</div>

@@ -1,0 +1,17 @@
+{
+  "name": "libs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "spin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "video.js": "^7.6.6",
+    "videojs-contrib-hls": "^5.15.0",
+    "videojs-event-tracking": "^1.0.1",
+    "videojs-flash": "^2.2.1"
+  }
+}

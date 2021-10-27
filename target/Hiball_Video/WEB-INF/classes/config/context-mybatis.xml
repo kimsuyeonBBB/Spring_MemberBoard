@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+	<!-- scan for mappers and let them be autowired -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="classpath:sqlMap" />
+		<property name="annotationClass" value="org.springframework.stereotype.Repository" />
+	</bean>
+	
+	<bean id="jdbcProp" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:jdbc.properties"/>
+	</bean> 
+	<!-- Default sqlSession set -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="validationQuery" value="select 1"/>
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:config/mybatis-config-base.xml" />
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:sqlMap/*Mapper.xml</value>
+				<value>classpath:sqlMap/info/*Mapper.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		<constructor-arg index="0" ref="sqlSessionFactory"/>
+	</bean>
+	
+	<bean id="transactionManager" class=" org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<!-- 2014 sqlSession sett
+	<bean id="dataSource2014" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${hiball.2014.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="validationQuery" value="select 1"/>
+	</bean>
+	
+	<bean id="sqlSessionFactory_2014" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource2014" />
+		<property name="configLocation" value="classpath:config/mybatis-config-base.xml" />
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:sqlMap/*Mapper.xml</value>
+				<value>classpath:sqlMap_ver2/*Mapper.xml</value>
+				<value>classpath:sqlMap_ver2/common/*Common.xml</value>
+				<value>classpath:sqlMap_ver2/player/batter/*Mapper.xml</value>
+				<value>classpath:sqlMap_ver2/player/catcher/*Mapper.xml</value>
+				<value>classpath:sqlMap_ver2/pattern/*Mapper.xml</value>
+				<value>classpath:sqlMap_ver2/player/pitcher/*Mapper.xml</value>
+				<value>classpath:sqlMap_ver2/info/*Mapper.xml</value>
+				<value>classpath:sqlMap_ver2/team/*Mapper.xml</value>
+				<value>classpath:sqlMap_ver2/teampattern/*Mapper.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="sqlSession_2014" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		<constructor-arg index="0" ref="sqlSessionFactory_2014"/>
+	</bean>
+	
+	<bean id="transactionManager_2014" class=" org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource2014"/>
+	</bean>
+	
+	2015 SqlSession Config
+	<bean id="dataSource2015" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${hiball.2015.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="validationQuery" value="select 1"/>
+	</bean>
+	
+	<bean id="sqlSessionFactory_2015" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource2015" />
+		<property name="configLocation" value="classpath:config/mybatis-config-base.xml" />
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:sqlMap/*Mapper.xml</value>
+				<value>classpath:sqlMap_ver2/*Mapper.xml</value>
+				<value>classpath:sqlMap_ver2/common/*Common.xml</value>
+				<value>classpath:sqlMap_ver2/player/batter/*Mapper.xml</value>
+				<value>classpath:sqlMap_ver2/player/catcher/*Mapper.xml</value>
+				<value>classpath:sqlMap_ver2/pattern/*Mapper.xml</value>
+				<value>classpath:sqlMap_ver2/player/pitcher/*Mapper.xml</value>
+				<value>classpath:sqlMap_ver2/info/*Mapper.xml</value>
+				<value>classpath:sqlMap_ver2/team/*Mapper.xml</value>
+				<value>classpath:sqlMap_ver2/teampattern/*Mapper.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="sqlSession_2015" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		<constructor-arg index="0" ref="sqlSessionFactory_2015"/>
+	</bean>
+	
+	<bean id="transactionManager_2015" class=" org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource2015"/>
+	</bean>
+	
+	2016 SqlSession Config
+	<bean id="dataSource2016" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${hiball.2016.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="validationQuery" value="select 1"/>
+	</bean>
+	
+	<bean id="sqlSessionFactory_2016" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource2016" />
+		<property name="configLocation" value="classpath:config/mybatis-config-base.xml" />
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:sqlMap/*Mapper.xml</value>
+				<value>classpath:sqlMap_ver2/*Mapper.xml</value>
+				<value>classpath:sqlMap_ver2/common/*Common.xml</value>
+				<value>classpath:sqlMap_ver2/player/batter/*Mapper.xml</value>
+				<value>classpath:sqlMap_ver2/player/catcher/*Mapper.xml</value>
+				<value>classpath:sqlMap_ver2/pattern/*Mapper.xml</value>
+				<value>classpath:sqlMap_ver2/player/pitcher/*Mapper.xml</value>
+				<value>classpath:sqlMap_ver2/info/*Mapper.xml</value>
+				<value>classpath:sqlMap_ver2/team/*Mapper.xml</value>
+				<value>classpath:sqlMap_ver2/teampattern/*Mapper.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="sqlSession_2016" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		<constructor-arg index="0" ref="sqlSessionFactory_2016"/>
+	</bean>
+	
+	<bean id="transactionManager_2016" class=" org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource2016"/>
+	</bean> -->
+	
+	<tx:annotation-driven transaction-manager="transactionManager" />
+</beans>

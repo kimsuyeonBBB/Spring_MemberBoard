@@ -1,0 +1,79 @@
+<div class="row content-menu-wrap">
+	<table>
+		<tr>
+			<td>
+				<table>
+					<tr>
+						<td class="title title-criteria">경기유형</td>
+						<td>
+							<select id="gameType">
+								<option value="4201" selected>패넌트레이스</option>
+								<option value="4202">퓨쳐스</option>
+							</select>
+						</td>
+						<td class="title title-criteria">시즌</td>
+						<td>
+							<select id="season">
+								<option value='2019'>2019</option>
+								<option value='2018'>2018</option>
+								<option value='2017'>2017</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<td rowspan="3">
+				<button id='retrieveGame' class="btn btn-danger">경기조회</button>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table>
+					<tr>
+						<td colspan="3" class="title title-single">기간(From ~ To)</td>
+					</tr>
+					<tr>
+						<td id="fromDatePicker"></td>
+						<td> ~ </td>
+						<td id="toDatePicker"></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table>
+					<tr>
+						<td  class="title title-criteria">팀</td>
+						<td>
+							<select id="teamId"></select>
+						</td>
+						<td class="title title-middle">VS.</td>
+						<td class="title title-criteria">상대팀</td>
+						<td>
+							<select id="oppTeamId"></select>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</div>
+<div id="gameList" class="row game-list-wrap">
+</div>
+<div class="row content-list-pager">
+	<table>
+		<tr>
+			<td>
+				<ul class="pagination">
+					<li class="page-item"><a class="page-link" href="#">&lt;</a></li>
+					<li class="page-item"><a class="page-link" href="#">1</a></li>
+					<li class="page-item"><a class="page-link" href="#">&gt;</a></li>
+				</ul>
+			</td>
+			<td>
+				<button class="btn btn-success" id="retrieveVideo">영상조회</button>
+			</td>
+		</tr>
+	</table>
+</div>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	th,td { font-size: 13px; }
+	input { width:70px; height:35px; font-size:13px; margin-left:100px;}
+	table { width:800px; height:500px; }
+</style>
+</head>
+<body>
+	<div class="row">
+	<div class="col-10"><h2>게시글 목록</h2></div>
+	<div class="col-2"><input type="button" value='게시글 작성' onclick='location.href="boardAdd"' style='width:90px; height:30px;'></div> 
+	</div>
+	<table>
+	<thead>
+		<tr>
+			<th>번호</th>
+			<th>제목</th>
+			<th>등록일</th>
+			<th>작성자</th>
+		</tr>
+	</thead>
+	<tbody>
+		<%_.each(data, function(item, idx){  %>
+		<tr style='text-align:center'>
+			<td><%=item['no']%></td>
+			<td><a href="boardUpdate?no=<%=item['no']%>"><%=item['title']%></a></td>
+			<td><%=item['createdDate']%></td>
+			<td><%=item['name']%></td>
+		</tr>
+		<% }); %>
+	</tbody>
+	</table>
+
+</body>
+</html>

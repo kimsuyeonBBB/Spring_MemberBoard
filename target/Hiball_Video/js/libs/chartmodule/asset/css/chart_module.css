@@ -1,0 +1,124 @@
+/* Pitching Zone Chart CSS */
+.ball_zone		{position:absolute;}
+.strike_zone	{position:relative; width:72%; height:72%; top:14%; left:14%; background:rgba(255,255,255,1.0);}
+/* .pin_zone		{position:relative; width:63%; height:64%; top:-63%; left:10%; background:rgba(0,0,0,0.0); border:25px solid rgba(255,0,0,0.3);} */
+.ball_zone td	{border-color:#c0c0c0; height:0px;}
+.strike_zone td	{border-color:#c0c0c0; height:0px;}
+/* #pitchedInfoDisplay {position:absolute; width:150px; height:140px; text-align:left;}
+#hittedInfoDisplay {position:absolute; width:150px; height:140px; text-align:left;} */
+#spotInfoDisplay {position:relative; width:145px; height:140px; text-align:left; padding-top:3px; padding-left:3px; border:1px dotted #c0c0c0;}
+.strikeZone {border:2px solid black;}
+/* .verticalLegend {position:relative; width:100%;}
+.verticalLegend .legend{position:absolute;
+	height:10px; width:100%;	
+}
+.verticalLegend td{height:10px; padding-left:10px;}
+.verticalLegend .color{width:10px;}
+ */
+
+
+.zoneWrapper							{position:relative; width:0px; /* margin-top:30px; margin-bottom:30px; */ text-align:center; border:0px none;}
+.pitZoneWrapper							{position:relative;}
+.zoneWrapper canvas						{position:absolute; top:0px; left:0px; border:0px none; background:none repeat scroll 0% 0% transparent; z-index:1;}							
+.zoneWrapper #pitchedInfoDisplay		{left:0px;}
+.zoneWrapper #hittedInfoDisplay 		{right:0px;}
+
+.color {
+	width:20px;
+	height:0px;
+}
+td.batterHand {
+	width:30px; font-size:15px;font-weight:bold;
+}
+td.lName {height:18px;}
+
+.pitchZoneSprayWrapper80 				{width:80px; height:80px;}
+.pitchZoneSprayWrapper80 canvas 		{width:80px; height:80px;}
+.pitchZoneSprayWrapper80 .ball_zone 	{width:80px; height:80px;}
+.pitchZoneSprayWrapper80 .verticalLegend {top:83px;}
+
+.pitchZoneSprayWrapper100 				{width:100px; height:100px;}
+.pitchZoneSprayWrapper100 canvas 		{width:100px; height:100px;}
+.pitchZoneSprayWrapper100 .ball_zone 	{width:100px; height:100px;}
+.pitchZoneSprayWrapper100 .verticalLegend {top:103px;}
+
+.pitchZoneSprayWrapper150 				{width:150px; height:150px;}
+.pitchZoneSprayWrapper150 canvas 		{width:150px; height:150px;}
+.pitchZoneSprayWrapper150 .ball_zone 	{width:150px; height:150px;}
+.pitchZoneSprayWrapper150 .verticalLegend {top:153px;}
+
+.pitchZoneSprayWrapper200 				{width:200px; height:200px;}
+.pitchZoneSprayWrapper200 canvas 		{width:200px; height:200px;}
+.pitchZoneSprayWrapper200 .ball_zone 	{width:200px; height:200px;}
+.pitchZoneSprayWrapper200 .verticalLegend {top:203px;}
+
+.pitchZoneSprayWrapper250 				{width:250px; height:250px;}
+.pitchZoneSprayWrapper250 canvas 		{width:250px; height:250px;}
+.pitchZoneSprayWrapper250 .ball_zone 	{width:250px; height:250px;}
+.pitchZoneSprayWrapper250 .verticalLegend {top:253px;}
+
+.pitchZoneSprayWrapper300 				{width:300px; height:300px;}
+.pitchZoneSprayWrapper300 canvas 		{width:300px; height:300px;}
+.pitchZoneSprayWrapper300 .ball_zone 	{width:300px; height:300px;}
+.pitchZoneSprayWrapper300 .verticalLegend {top:303px;}
+
+.pitchZoneSprayWrapper350 				{width:350px; height:350px;}
+.pitchZoneSprayWrapper350 canvas 		{width:350px; height:350px;}
+.pitchZoneSprayWrapper350 .ball_zone 	{width:350px; height:350px;}
+.pitchZoneSprayWrapper350 .verticalLegend {top:353px;}
+
+.pitchZoneSprayWrapper400 				{width:400px; height:400px;}
+.pitchZoneSprayWrapper400 canvas 		{width:400px; height:400px;}
+.pitchZoneSprayWrapper400 .ball_zone 	{width:400px; height:400px;}
+.pitchZoneSprayWrapper400 .verticalLegend {top:403px;}
+
+.pitchZoneSprayWrapper450 				{width:450px; height:450px;}
+.pitchZoneSprayWrapper450 canvas 		{width:450px; height:450px;}
+.pitchZoneSprayWrapper450 .ball_zone 	{width:450px; height:450px;}
+.pitchZoneSprayWrapper450 .verticalLegend {top:453px;}
+
+/* End of PitchingZone */
+/* Hitting Course Zone Chart CSS */
+.hitZoneSprayWrapper80 				{width:80px; height:80px;}
+.hitZoneSprayWrapper80 canvas		{width:80px; height:80px;}
+.hitZoneSprayWrapper80 .playground 	{width:80px; height:80px; background:transparent url('../img/playGround_80_line.gif') 0 0 no-repeat; float:left;}
+
+.hitZoneSprayWrapper100 			{width:100px; height:100px;}
+.hitZoneSprayWrapper100 canvas		{width:100px; height:100px;}
+.hitZoneSprayWrapper100 .playground {width:100px; height:100px; background:transparent url('../img/playGround_100.png') 0 0 no-repeat; float:left;}
+
+.hitZoneSprayWrapper150 			{width:150px; height:150px;}
+.hitZoneSprayWrapper150 canvas		{width:150px; height:150px;}
+.hitZoneSprayWrapper150 .playground {width:150px; height:150px; background:transparent url('../img/playGround_150.png') 0 0 no-repeat; float:left;}
+
+.hitZoneSprayWrapper200 			{width:200px; height:200px;}
+.hitZoneSprayWrapper200 canvas		{width:200px; height:200px;}
+.hitZoneSprayWrapper200 .playground {width:200px; height:200px; background:transparent url('../img/playGround_200_line.gif') 0 0 no-repeat; float:left;}
+
+.hitZoneSprayWrapper250 			{width:250px; height:250px;}
+.hitZoneSprayWrapper250 canvas		{width:250px; height:250px;}
+.hitZoneSprayWrapper250 .playground {width:250px; height:250px; background:transparent url('../img/playGround_250.png') 0 0 no-repeat; float:left;}
+
+.hitZoneSprayWrapper300 			{width:300px; height:300px;}
+.hitZoneSprayWrapper300 canvas		{width:300px; height:300px;}
+.hitZoneSprayWrapper300 .playground {width:300px; height:300px; background:transparent url('../img/playGround_300_white.png') 0 0 no-repeat; float:left;}
+
+.hitZoneSprayWrapper350 			{width:350px; height:350px;}
+.hitZoneSprayWrapper350 canvas		{width:350px; height:350px;}
+.hitZoneSprayWrapper350 .playground {width:350px; height:350px; background:transparent url('../img/playGround_350_line.gif') 0 0 no-repeat; float:left;}
+
+.hitZoneSprayWrapper400 			{width:400px; height:400px;}
+.hitZoneSprayWrapper400 canvas		{width:400px; height:400px;}
+.hitZoneSprayWrapper400 .playground {width:400px; height:400px; background:transparent url('../img/playGround_400.png') 0 0 no-repeat; float:left;}
+
+.hitZoneSprayWrapper450 			{width:450px; height:450px;}
+.hitZoneSprayWrapper450 canvas		{width:450px; height:450px;}
+.hitZoneSprayWrapper450 .playground {width:450px; height:450px; background:transparent url('../img/playGround_450_line.gif') 0 0 no-repeat; float:left;}
+
+.categoryList td {height:20px;}
+.categoryList th {height:25px;}
+
+
+.zoneWrapper td.active{background:#D5D5D5;}
+#pitchZoneDetail{padding-top:30px; padding-right:0px; padding-left:0px;}
+#summaryList{padding-right:}

@@ -1,0 +1,23 @@
+﻿.content-menu-wrap .btn {
+	margin-top:3px;
+	margin-bottom:20px;
+	letter-spacing:5px;
+}
+.content-menu-wrap .btn-detail > .btn{
+	cursor:pointer;
+	letter-spacing:1px;
+	margin-top:15px;
+	margin-bottom:5px;
+	border:1px solid #cecece;
+	height:18px;
+	font-size:11px;
+}
+
+.detail-criteria {
+	padding:2px;
+}
+
+.content-menu-wrap .btn-detail > .active {
+	background-color:#cecece;
+	color:#fff;
+}

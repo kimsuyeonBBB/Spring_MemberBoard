@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>회원 정보</h2>
+
+번호 : <input id='updateNo' type='text' name='no' value='<%=data.no%>' style='width:200px;' readonly><br>
+이름 : <input id='updateName' type='text' name='name' value='<%=data.name%>' style='margin-top:10px; width:200px;'><br>
+이메일 : <input id='updateEmail' type='text' name='email' value='<%=data.email%>' style='margin-top:10px; width:180px;'><br>
+ID : <input id='updateId' type='text' name='id' value='<%=data.id%>' style='margin-top:10px;width:210px;'><br>
+Password : <input id='updatePwd' type='text' name='password' value='<%=data.password%>' style='margin-top:10px; width:160px;'><br><br>
+가입일 : <%=data.createdDate%><br>
+<input id='updatebtn' type='button' value='저장' style='margin-top:10px' onclick='location.href="memberList"'>
+<input id='removebtn' type='button' value='삭제' rel='<%=data.no%>'>
+<input type='button' value='취소' onclick='location.href="memberList"'>
+
+</body>
+</html>

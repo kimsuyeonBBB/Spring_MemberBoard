@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	th,td { font-size: 13px; }
+	input { margin-left:730px; margin-bottom:10px; width:70px; height:30px; font-size:13px;}
+	table { width:800px; height:500px; }
+</style>
+</head>
+<body>
+	<h2>회원 목록</h2>
+	<br>
+	<table>
+	<thead>
+		<tr>
+			<th>번호</th>
+			<th>이름</th>
+			<th>이메일</th>
+			<th>생성일</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<%_.each(data, function (item, idx){
+
+		%>
+		<tr style='text-align:center'>
+			<td><%=item['no']%></td>
+			<td><a href="memberUpdate?no=<%=item['no']%>"><%=item['name']%></a></td>
+			<td><%=item['email']%></td>
+			<td><%=item['createdDate']%></td>
+			<td><a class='removebtn' href='' rel='<%=item["no"]%>'>[삭제]</a></td>
+		</tr>
+		<% }); %>
+	</tbody>
+	</table>
+</body>
+</html>

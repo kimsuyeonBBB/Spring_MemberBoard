@@ -1,0 +1,27 @@
+<div class='row list-top'>
+	<div class="col-3">
+		<button id='returnCriteria' class="btn btn-return"></button>
+	</div>
+	<div class='col-9'>
+		<form>
+			<div class='input-group mb-1'>
+				<div class="input-group-prepend">
+					<span class="input-group-text custom-select-sm" data-lang="sortBy">정렬</span>
+				</div>
+				<select id="sorting" name="season" class="form-control custom-select-sm">
+					<option value="latest" data-lang="desc">최신순</option>
+					<option value="match" data-lang="asc">차전순</option>
+				</select>
+			</div>
+		</form>
+	</div>
+</div>
+<div id="gameList" class="row game-list-wrap">
+</div>
+<div class="row btn-wrap">
+	<div class='col-12'>
+		<button id='playingGame' class="btn btn-retrieve" data-lang="watchClip">선택보기</button>
+	</div>
+</div>
+<input id="selectedGames" type='hidden' value=""/>
+<input id="videoTypes" type='hidden' value=""/>

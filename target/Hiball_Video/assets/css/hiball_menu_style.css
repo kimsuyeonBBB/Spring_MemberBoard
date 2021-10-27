@@ -1,0 +1,49 @@
+﻿.content-menu-wrap {
+	padding: 5px 0px 5px 0px;
+	margin-left:0px;
+	margin-right:0px;
+}
+.content-menu-wrap .btn-table {
+	display:table;
+	width:100%;
+	height:100%;
+}
+.content-menu-wrap .btn-row {
+	display:table-row;
+	padding:5px;
+	margin:5px;
+}
+.content-menu-wrap .btn-cell {
+	margin:5px;
+	display:table-cell;
+	width:50%;
+}
+
+.game-list-wrap {
+	min-height:150px;
+	width:100%;
+	padding:5px 0px 5px 0px;
+	margin-left:0px;
+	margin-right:0px;
+}
+
+.game-list-wrap table.game-list {
+	width:100%;
+}
+.game-list-wrap .game-list td {
+	border:1px solid #ccc;
+	text-align:center;
+}
+.game-list-wrap .inner-table td {
+	border-top:0px solid #ccc;
+	border-left:0px solid #ccc;
+	border-bottom:1px solid #ccc;
+	border-right:1px solid #ccc;
+}
+
+.content-list-pager {
+	width:100%;
+	padding:5px 0px 5px 0px;
+	margin-left:0px;
+	margin-right:0px;
+}

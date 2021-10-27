@@ -1,0 +1,144 @@
+<table>
+	<tr>
+		<td class="game-list-title">
+			<div style="font-size:11px; overflow-y:scroll; height:100%; width:100%;">
+			<table>
+				<tr>
+					<td width="83%">
+						<table>
+							<tr>
+								<td class="title title-main" width='10%' data-lang="gameSeq">차전</td>
+								<td class="title title-main" width='15%' data-lang="gameDate">일자</td>
+								<td class="title title-main" width='25%' data-lang="away">원정</td>
+								<td class="title title-main" width='15%' data-lang="score">득점</td>
+								<td class="title title-main" width='25%' data-lang="home">홈</td>
+							</tr>
+						</table>
+					</td>
+					<td width="17%">
+						<table>
+							<tr>
+								<td class="title title-main" data-lang="clipType">영상유형</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td id="gameListWrap" class="game-list" style="height:250px;">
+			<div id="scrollList" style="font-size:11px; overflow-y:scroll; height:100%; width:100%;">
+				<div id="gameContents">
+				<%if (_.size(list)>0) {
+					var gameCnt = 1;
+					if (sorting == 'latest') {
+						gameCnt = _.size(list);
+					} 
+				%>
+					<%_.each(list, function (gameInfo, idx) {
+							var awayScore = Number(gameInfo.awayTeamScore);
+							var homeScore = Number(gameInfo.homeTeamScore);
+							
+							var videoTypes = gameInfo.videoType;
+					%>
+					<table>
+						<tr>
+							<td width="83%">
+								<table <%if (videoTypes == null) {%>class="inner-table disable-table"<%}else {%>name="gameItems" class="inner-table"<%}%> rel="<%=gameInfo.gameInfoId%>">
+									<tr>
+										<td width="10%"><%=gameCnt%></td>
+										<td width="15%"><%=gameInfo.gameDay%></td>
+										<td width="25%">
+                                            <% if (useLang == 'en') {%>
+                                                   <span <% if (awayScore > homeScore) {%>class="win"<%}%>><%=gameInfo.awayShortName%></span><br>
+                                                   <% if (gameInfo.awayPitcherForeignerYn == 'N') { %>
+                                                        &lt;#<%=gameInfo.awayPitcherBacknum%> <%=gameInfo.awayPitcherLastName%>,<%=gameInfo.awayPitcherShortName%>>
+                                                   <%} else { %>
+                                                        &lt;#<%=gameInfo.awayPitcherBacknum%> <%=gameInfo.awayPitcherLastName%>>
+                                                   <%}%>
+                                            <% } else { %>
+                                                   <span <% if (awayScore > homeScore) {%>class="win"<%}%>><%=gameInfo.awayTeamName%></span><br>
+                                                   &lt;#<%=gameInfo.awayPitcherBacknum%> <%=gameInfo.awayBeginPitcher%>>
+                                            <% }%>
+                                        </td>
+										<td width="15%"><span <% if (awayScore > homeScore) {%>class="win"<%}%>><%=awayScore%></span> : <span <% if (awayScore < homeScore) {%>class="win"<%}%>><%=homeScore%></span></td>
+										<td width="25%">
+                                            <% if (useLang == 'en') { %>
+                                                <span <% if (awayScore < homeScore) {%>class="win"<%}%>><%=gameInfo.homeShortName%></span><br>
+                                                <% if (gameInfo.homePitcherForeignerYn == 'N') { %>
+                                                        &lt;#<%=gameInfo.homePitcherBacknum%> <%=gameInfo.homePitcherLastName%>,<%=gameInfo.homePitcherShortName%>>
+                                                   <%} else { %>
+                                                        &lt;#<%=gameInfo.homePitcherBacknum%> <%=gameInfo.homePitcherLastName%>>
+                                                   <%}%>
+                                            <% } else { %>										
+                                                <span <% if (awayScore < homeScore) {%>class="win"<%}%>><%=gameInfo.homeTeamName%></span><br>
+                                                &lt;#<%=gameInfo.homePitcherBacknum%> <%=gameInfo.homeBeginPitcher%>>
+                                            <% } %>
+                                        </td>
+									</tr>
+								</table>
+							</td>
+							<td width="17%">
+								<table class="inner-table">
+									<tr>
+										<td>
+										<% if (videoTypes != null) {%>
+											<select id="videoType_<%=gameInfo.gameInfoId%>" name='selectedVideoTypes'>
+											<% _.each(videoTypes, function (type){ %>
+												<option value="<%=type%>">
+												<% if (type.indexOf('cam')>-1) {%>
+												    <% if (useLang == 'en') {%>
+													       <%=type.replace('cam','CAM ')%>
+												    <% } else { %>
+													       <%=type.replace('cam','캠 ')%>
+													<% }%>
+												<%} else {%>
+												    <% if (useLang == 'en') {%>
+                                                          Broadcast
+                                                    <% } else { %>
+                                                           중계
+                                                    <% }%>
+													
+												<%}%>
+												</option>					
+											<%})%>
+											</select>
+										<%} else {%>
+                                            <% if (useLang == 'en') {%>
+                                                Not Yet...
+                                            <% } else { %>                                                
+                                                등록 전...
+                                            <% }%>
+										<%}%>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+					<% 	if(sorting=='latest'){
+							gameCnt--;
+						} else {
+							gameCnt++;
+						}
+					}); %>
+				<%} else if (list==null) {%>
+					<table class="empty-table">
+						<tr>
+							<td style="padding:0px;" data-lang="retrieveGames">경기를 조회 해 주십시오.</td>
+						</tr>
+					</table>
+				<%} else {%>
+					<table class="empty-table">
+						<tr>
+							<td style="padding:0px;" data-lang="notExistGame">경기가 없습니다.</td>
+						</tr>
+					</table>
+				<%}%>
+				</div>
+			</div>
+		</td>
+	</tr>
+</table>

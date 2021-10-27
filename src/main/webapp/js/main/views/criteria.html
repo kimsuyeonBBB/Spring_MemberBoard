@@ -1,0 +1,192 @@
+<table class="criteria-popup">
+	<tr>
+		<td class="title">단축</td>
+		<td colspan="3" class="criteria-preset">
+			<button name="preSet" type="button" class="btn btn-secondary" value="default">기본값</button>
+			<button name="preSet" type="button" class="btn btn-secondary" value="whole">전체</button>
+			<button name="preSet" type="button" class="btn btn-secondary" value="hit">안타</button>
+			<button name="preSet" type="button" class="btn btn-secondary" value="batting">스윙</button>
+			<button name="preSet" type="button" class="btn btn-secondary" value="miss-swing">헛스윙/스탠딩</button>
+		</td>
+	</tr>
+	<tr>
+		<td class="title">이닝</td>
+		<td colspan="3">
+			<select name="criteria-elem" id="inning" multiple="multiple">
+				<option value="1" <%if(_.contains(confirmed.inning, '1')) {%>selected<%}%>>1이닝</option>
+				<option value="2" <%if(_.contains(confirmed.inning, '2')) {%>selected<%}%>>2이닝</option>
+				<option value="3" <%if(_.contains(confirmed.inning, '3')) {%>selected<%}%>>3이닝</option>
+				<option value="4" <%if(_.contains(confirmed.inning, '4')) {%>selected<%}%>>4이닝</option>
+				<option value="5" <%if(_.contains(confirmed.inning, '5')) {%>selected<%}%>>5이닝</option>
+				<option value="6" <%if(_.contains(confirmed.inning, '6')) {%>selected<%}%>>6이닝</option>
+				<option value="7" <%if(_.contains(confirmed.inning, '7')) {%>selected<%}%>>7이닝</option>
+				<option value="8" <%if(_.contains(confirmed.inning, '8')) {%>selected<%}%>>8이닝</option>
+				<option value="9" <%if(_.contains(confirmed.inning, '9')) {%>selected<%}%>>9이닝</option>
+				<option value="10" <%if(_.contains(confirmed.inning, '10')) {%>selected<%}%>>10이닝</option>
+				<option value="11" <%if(_.contains(confirmed.inning, '11')) {%>selected<%}%>>11이닝</option>
+				<option value="12" <%if(_.contains(confirmed.inning, '12')) {%>selected<%}%>>12이닝</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td class="title">타자팀</td>
+		<td>
+			<%=playerInfo.teamName%>
+		</td>
+		<td class="title">투수팀</td>
+		<td>
+			<%=playerInfo.oppTeamName%>
+		</td>
+	</tr>
+	<tr>
+		<td class="title">타자</td>
+		<td>
+		<% 
+			var batters = playerInfo.players;
+			var pitchers = playerInfo.oppPlayers;
+		%>		
+			<select name="criteria-elem" id="batterId" multiple="multiple" >
+				<option value="-1" disabled selected hidden>전체</option>
+			<% _.each(batters, function (batter){%>
+				<option value="<%=batter.batterId%>" <%if(_.contains(confirmed.batterId, batter.batterId)) {%>selected<%}%>><%=batter.batterName%>(<%=batter.batterBacknum%>)</option>
+			<%})%>
+			</select>
+		</td>
+		<td class="title">투수</td>
+		<td>
+			<select name="criteria-elem" id="pitcherId" multiple="multiple">
+				<option value="-1" disabled selected hidden>전체</option>
+			<% _.each(pitchers, function (pitcher){%>
+				<option value="<%=pitcher.pitcherId%>" <%if(_.contains(confirmed.pitcherId, pitcher.pitcherId)) {%>selected<%}%>><%=pitcher.pitcherName%>(<%=pitcher.pitcherBacknum%>)</option>
+			<%})%>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td class="title">구종</td>
+		<td>
+			<select name="criteria-elem" id="ballCode" multiple="multiple">
+				<option value="-1" disabled selected hidden>전체</option>
+				<option value="6116" <%if(_.contains(confirmed.ballCode, '6116')) {%>selected<%}%>>직구</option>
+				<option value="6101" <%if(_.contains(confirmed.ballCode, '6101')) {%>selected<%}%>>투심</option>
+				<option value="6117" <%if(_.contains(confirmed.ballCode, '6117')) {%>selected<%}%>>커터</option>
+				<option value="6108" <%if(_.contains(confirmed.ballCode, '6108')) {%>selected<%}%>>커브</option>
+				<option value="6111" <%if(_.contains(confirmed.ballCode, '6111')) {%>selected<%}%>>슬라이더</option>
+				<option value="6103" <%if(_.contains(confirmed.ballCode, '6103')) {%>selected<%}%>>체인지업</option>
+				<option value="6107" <%if(_.contains(confirmed.ballCode, '6107')) {%>selected<%}%>>포크</option>
+				<option value="6114" <%if(_.contains(confirmed.ballCode, '6114')) {%>selected<%}%>>너클</option>
+				<option value="6199" <%if(_.contains(confirmed.ballCode, '6199')) {%>selected<%}%>>기타</option>
+			</select>
+		</td>
+		<td class="title">주자</td>
+		<td>
+			<select name="criteria-elem" id="beforeRunnerState" multiple="multiple">
+				<option value="-1" disabled selected hidden>전체</option>
+				<option value='0' <%if(_.contains(confirmed.beforeRunnerState, '0')) {%>selected<%}%>>주자없음</option>
+				<option value='1' <%if(_.contains(confirmed.beforeRunnerState, '1')) {%>selected<%}%>>1루</option>
+				<option value='2' <%if(_.contains(confirmed.beforeRunnerState, '2')) {%>selected<%}%>>2루</option>
+				<option value='4' <%if(_.contains(confirmed.beforeRunnerState, '4')) {%>selected<%}%>>3루</option>
+				<option value='3' <%if(_.contains(confirmed.beforeRunnerState, '3')) {%>selected<%}%>>1-2루</option>
+				<option value='5' <%if(_.contains(confirmed.beforeRunnerState, '5')) {%>selected<%}%>>1-3루</option>
+				<option value='6' <%if(_.contains(confirmed.beforeRunnerState, '6')) {%>selected<%}%>>2-3루</option>
+				<option value='7' <%if(_.contains(confirmed.beforeRunnerState, '7')) {%>selected<%}%>>만루</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td class="title">카운트</td>
+		<td>
+			<select name="criteria-elem" id="ballCount" multiple="multiple">
+				<option value="-1" disabled selected hidden>전체</option>
+				<option value='0-0' <%if(_.contains(confirmed.ballCount, '0-0')) {%>selected<%}%>>0-0</option>
+				<option value='0-1' <%if(_.contains(confirmed.ballCount, '0-1')) {%>selected<%}%>>0-1</option>
+				<option value='0-2' <%if(_.contains(confirmed.ballCount, '0-2')) {%>selected<%}%>>0-2</option>
+				<option value='1-0' <%if(_.contains(confirmed.ballCount, '1-0')) {%>selected<%}%>>1-0</option>
+				<option value='1-1' <%if(_.contains(confirmed.ballCount, '1-1')) {%>selected<%}%>>1-1</option>
+				<option value='1-2' <%if(_.contains(confirmed.ballCount, '1-2')) {%>selected<%}%>>1-2</option>
+				<option value='2-0' <%if(_.contains(confirmed.ballCount, '2-0')) {%>selected<%}%>>2-0</option>
+				<option value='2-1' <%if(_.contains(confirmed.ballCount, '2-1')) {%>selected<%}%>>2-1</option>
+				<option value='2-2' <%if(_.contains(confirmed.ballCount, '2-2')) {%>selected<%}%>>2-2</option>
+				<option value='3-0' <%if(_.contains(confirmed.ballCount, '3-0')) {%>selected<%}%>>3-0</option>
+				<option value='3-1' <%if(_.contains(confirmed.ballCount, '3-1')) {%>selected<%}%>>3-1</option>
+				<option value='3-2' <%if(_.contains(confirmed.ballCount, '3-2')) {%>selected<%}%>>3-2</option>
+			</select>
+		</td>
+		<td class="title">타격형태</td>
+		<td>
+			<select name="criteria-elem" id="hitTypeCode" multiple="multiple">
+				<option value="-1" disabled selected hidden>전체</option>
+				<option value='6301' <%if(_.contains(confirmed.hitTypeCode, '6301')){%>selected<%}%>>스탠딩</option>
+				<option value='6302' <%if(_.contains(confirmed.hitTypeCode, '6302')){%>selected<%}%>>타격</option>
+				<option value='6303' <%if(_.contains(confirmed.hitTypeCode, '6303')){%>selected<%}%>>헛스윙</option>
+				<option value='6306' <%if(_.contains(confirmed.hitTypeCode, '6306')){%>selected<%}%>>번트</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td class="title">타격결과</td>
+		<td>
+			<select name="criteria-elem" id="hitResultCode" multiple="multiple">
+				<option value="-1" disabled selected hidden>전체</option>
+				<option value="6604" <% if(_.contains(confirmed.hitResultCode, '6604')) {%>selected<%}%>>단타</option>
+				<option value="6607" <% if(_.contains(confirmed.hitResultCode, '6607')) {%>selected<%}%>>2루타</option>
+				<option value="6610" <% if(_.contains(confirmed.hitResultCode, '6610')) {%>selected<%}%>>3루타</option>
+				<option value="6613" <% if(_.contains(confirmed.hitResultCode, '6613')) {%>selected<%}%>>홈런</option>
+				<option value="6629" <% if(_.contains(confirmed.hitResultCode, '6629')) {%>selected<%}%>>그라운드홈런</option>
+				<option value="6638" <% if(_.contains(confirmed.hitResultCode, '6638')) {%>selected<%}%>>땅볼</option>
+				<option value="6615" <% if(_.contains(confirmed.hitResultCode, '6615')) {%>selected<%}%>>실책출루</option>
+				<option value="6622" <% if(_.contains(confirmed.hitResultCode, '6622')) {%>selected<%}%>>야선출루</option>
+				<option value="6608" <% if(_.contains(confirmed.hitResultCode, '6608')) {%>selected<%}%>>병살타</option>
+				<option value="6645" <% if(_.contains(confirmed.hitResultCode, '6645')) {%>selected<%}%>>삼중살</option>
+				<option value="6605" <% if(_.contains(confirmed.hitResultCode, '6605')) {%>selected<%}%>>땅볼아웃</option>
+				<option value="6602" <% if(_.contains(confirmed.hitResultCode, '6602')) {%>selected<%}%>>플라이아웃</option>
+				<option value="6612" <% if(_.contains(confirmed.hitResultCode, '6612')) {%>selected<%}%>>직선타아웃</option>
+				<option value="6619" <% if(_.contains(confirmed.hitResultCode, '6619')) {%>selected<%}%>>인필드플라이아웃</option>
+				<option value="6601" <% if(_.contains(confirmed.hitResultCode, '6601')) {%>selected<%}%>>파울</option>
+				<option value="6630" <% if(_.contains(confirmed.hitResultCode, '6630')) {%>selected<%}%>>파울플라이아웃</option>
+				<option value="6637" <% if(_.contains(confirmed.hitResultCode, '6637')) {%>selected<%}%>>파울희비아웃</option>
+				<option value="6614" <% if(_.contains(confirmed.hitResultCode, '6614')) {%>selected<%}%>>희비아웃</option>
+				<option value="6616" <% if(_.contains(confirmed.hitResultCode, '6616')) {%>selected<%}%>>희번아웃</option>
+				<option value="6642" <% if(_.contains(confirmed.hitResultCode, '6642')) {%>selected<%}%>>희비실책</option>
+				<option value="6640" <% if(_.contains(confirmed.hitResultCode, '6640')) {%>selected<%}%>>희번실책</option>
+				<option value="6641" <% if(_.contains(confirmed.hitResultCode, '6641')) {%>selected<%}%>>희생번트야선</option>
+				<option value="6633" <% if(_.contains(confirmed.hitResultCode, '6633')) {%>selected<%}%>>타격방해</option>
+				<option value="6636" <% if(_.contains(confirmed.hitResultCode, '6636')) {%>selected<%}%>>수비방해</option>
+				<option value="6656" <% if(_.contains(confirmed.hitResultCode, '6656')) {%>selected<%}%>>주루방해</option>
+				<option value="6603" <% if(_.contains(confirmed.hitResultCode, '6603')) {%>selected<%}%>>삼진아웃</option>
+				<option value="6606" <% if(_.contains(confirmed.hitResultCode, '6606')) {%>selected<%}%>>볼넷</option>
+				<option value="6609" <% if(_.contains(confirmed.hitResultCode, '6609')) {%>selected<%}%>>사구(HP)</option>
+				<option value="6624" <% if(_.contains(confirmed.hitResultCode, '6624')) {%>selected<%}%>>낫아웃(세이프)</option>
+				<option value="6625" <% if(_.contains(confirmed.hitResultCode, '6625')) {%>selected<%}%>>보크</option>
+				<option value="6626" <% if(_.contains(confirmed.hitResultCode, '6626')) {%>selected<%}%>>폭투</option>
+				<option value="6628" <% if(_.contains(confirmed.hitResultCode, '6628')) {%>selected<%}%>>고의4구</option>
+				<option value="6632" <% if(_.contains(confirmed.hitResultCode, '6632')) {%>selected<%}%>>포일</option>
+				<option value="6634" <% if(_.contains(confirmed.hitResultCode, '6634')) {%>selected<%}%>>낫아웃터치아웃</option>
+				<option value="6635" <% if(_.contains(confirmed.hitResultCode, '6635')) {%>selected<%}%>>3번트아웃</option>
+				<option value="6647" <% if(_.contains(confirmed.hitResultCode, '6647')) {%>selected<%}%>>폭투삼진</option>
+				<option value="6648" <% if(_.contains(confirmed.hitResultCode, '6648')) {%>selected<%}%>>폭투볼넷</option>
+				<option value="6649" <% if(_.contains(confirmed.hitResultCode, '6649')) {%>selected<%}%>>낫아웃(세이프)폭투</option>
+				<option value="6650" <% if(_.contains(confirmed.hitResultCode, '6650')) {%>selected<%}%>>낫아웃(세이프)포일</option>
+				<option value="6651" <% if(_.contains(confirmed.hitResultCode, '6651')) {%>selected<%}%>>포일볼넷</option>
+				<option value="6653" <% if(_.contains(confirmed.hitResultCode, '6653')) {%>selected<%}%>>12초룰위반</option>
+				<option value="6657" <% if(_.contains(confirmed.hitResultCode, '6657')) {%>selected<%}%>>자동고의4구</option>
+				<option value="6658" <% if(_.contains(confirmed.hitResultCode, '6658')) {%>selected<%}%>>12초룰위반(볼넷)</option>
+				<option value="6659" <% if(_.contains(confirmed.hitResultCode, '6659')) {%>selected<%}%>>포일삼진</option>
+				<option value="6660" <% if(_.contains(confirmed.hitResultCode, '6660')) {%>selected<%}%>>보크볼넷</option>
+			</select>
+		</td>
+		<td class='title'>견제</td>
+		<td>
+			<select name="criteria-elem" id="checkBase" multiple="multiple">
+				<option value='-1'>전체</option>
+				<option value="1" <%if(_.contains(confirmed.checkBase, '1')){%>selected<%}%>>1루견제</option>
+				<option value="2" <%if(_.contains(confirmed.checkBase, '2')){%>selected<%}%>>2루견제</option>
+				<option value="3" <%if(_.contains(confirmed.checkBase, '3')){%>selected<%}%>>3루견제</option>
+				<option value="14" <%if(_.contains(confirmed.checkBase,'14')){%>selected<%}%>>홈견제</option>
+				<option value="21" <%if(_.contains(confirmed.checkBase,'21')){%>selected<%}%>>포수1루견제</option>
+				<option value="22" <%if(_.contains(confirmed.checkBase,'22')){%>selected<%}%>>포수2루견제</option>
+				<option value="23" <%if(_.contains(confirmed.checkBase,'23')){%>selected<%}%>>포수3루견제</option>
+			</select>
+		</td>
+	</tr>
+</table>

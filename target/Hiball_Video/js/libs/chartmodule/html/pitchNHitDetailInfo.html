@@ -1,0 +1,63 @@
+<table class="moduleControlBar">
+	<tr>
+		<td>
+			<table class="controlButton">
+				<tr>
+					<th>보기</th>
+					<td><input type="radio" id="rateVis" name="visibleMethod" value="rateChart" checked="checked">비율</td>
+					<td><input type="radio" id="spreadVis" name="visibleMethod" value="spreadChart">분포</td>
+				</tr>
+			</table>
+		</td>
+		<td>
+			<table class="controlButton">
+				<tr>
+					<th colspan="2">분류</th>
+					<td><input type="radio" id="filter_hit" name="hitfilter" value="hit" checked="checked">안타</td>
+					<td><input type="radio" name="hitfilter" value="hr">홈런</td>
+					<td><input type="radio" name="hitfilter" value="go">땅볼아웃</td>
+					<td><input type="radio" name="hitfilter" value="fo">플라이아웃</td>
+					<td><input type="radio" name="hitfilter" value="standing">스탠딩</td>
+					<td><input type="radio" name="hitfilter" value="contact">컨텍트</td>
+					<td><input type="radio" name="hitfilter" value="swing">스윙</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" class="styleTable">
+	<tr>
+		<td id="pitchZoneChart" valign="top" align="center" >
+		</td>
+		<td id="detailInformation" width="25%" valign="top">
+			<table class="categoryList">
+				<tr><th colspan="4"><strong id="hitInfoTitle"><font class="nameInTitle"></font> 타격시 상세정보</strong></th></tr>
+				<tr>
+					<th>경기일자</th><td name="pitchDetail" colspan="3" id="gameDay">&nbsp;</td>
+				</tr>
+				<tr>
+					<th width="22%">상대팀</th><td width="23%" name="pitchDetail" id="oppTeam">&nbsp;</td>
+					<th width="25%">상대투수</th><td width="30%" name="pitchDetail" id="oppPitcher">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>주자상황</th><td name="pitchDetail" id="runnerStat">&nbsp;</td>
+					<th>카운트상황</th><td name="pitchDetail" id="countStat">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>구속</th><td name="pitchDetail" id="pitchSpeed">&nbsp;</td>
+					<th>구종</th><td name="pitchDetail" id="pitchType">&nbsp;</td>
+				</tr>
+				<tr>
+					<th>타격결과</th><td name="pitchDetail" id="hitResult">&nbsp;</td>
+					<th>판정</th><td name="pitchDetail" id="judgedForPitch">&nbsp;</td>
+				</tr>
+			</table>
+			<br/>
+			<div id="rateDetailArea">
+			</div>
+		</td>
+		<td id="hitCourseZoneChart" valign="top" align="center" >
+		</td>
+	</tr>
+</table>

@@ -1,0 +1,173 @@
+﻿.content-menu-wrap {
+	padding: 2px 0px 2px 0px;
+	margin-left:0px;
+	margin-right:0px;
+}
+.content-menu-wrap table.criteria-wrap {
+	margin:0px;
+	border:0px solid #ccc;
+	background-color:#fff;
+}
+
+.criteria-wrap td {
+	padding:0px;
+}
+
+.criteria-wrap td.btn-wrap {
+	text-align:center;
+}
+
+.criteria-wrap .criteria-btn-wrap {
+	width:30px;
+}
+
+.criteria-wrap .btn-criteria {
+	float:left;
+	border:1px solid #cacaca;
+	background-color:#d3d3d3;
+	border-radius:5px;
+	height:100%;
+	width: 25px;
+	font-size:10px;
+	padding:0px;
+	margin:2px;
+}
+
+.criteria-wrap .top {
+	border-top: 1px  solid #d3d3d3 !important;
+}
+
+.criteria-wrap .title-criteria {
+	width:12% !important;
+	background-color:#f6f4f0;
+	border-top:0px;
+	border-left:0px;
+	border-bottom:1px solid #d3d3d3;
+	border-right:1px solid #d3d3d3;
+}
+.criteria-wrap .val-criteria {
+	text-align:center;
+	border-top:0px;
+	border-left:0px;
+	border-bottom:1px solid #d3d3d3;
+	border-right:1px solid #d3d3d3;
+}
+
+.btn-wrap .btn-retrieve {
+	background-color:#ffb123;
+	font-size:15px;
+	color:#fff;
+	width:100%;
+	height:30px;
+}
+
+.val-criteria select {
+	width:98%;
+	height:100%
+}
+
+.val-criteria  .configOn { 
+	width:25px;
+	background:url('../images/design/ico_wet7_on.png');
+	background-size: 100% 100%; 
+}
+.val-criteria  .configOff { 
+	width:25px;
+	background:url('../images/design/ico_wet7.png');
+	background-size: 100% 100%; 
+}
+.game-list-wrap {
+	min-height:150px;
+	width:100%;
+	padding:2px 0px 2px 0px;
+	margin-left:0px;
+	margin-right:0px;
+	border-bottom:1px solid #e1e1e1;
+}
+
+.game-list-wrap table.game-list {
+	width:100%;
+}
+.game-list-wrap .game-list {
+	border:0px solid #e5e5e5;
+	padding:0px;
+}
+.game-list-wrap .game-list td {
+	height:36px;
+	border:0px solid #ccc;
+	padding:0px;
+	text-align:center;
+}
+.game-list-wrap .game-list-title {
+	padding:0px;
+}
+.game-list-wrap .game-list-title td {
+	padding:0px;
+}
+
+.game-list-wrap .inner-table td {
+	border-top:1px solid #ffbb00;
+	border-left:1px solid #ccc;
+	border-bottom:1px solid #e1e1e1;
+	border-right:1px solid #ccc;
+}
+.game-list-wrap .inner-table td select{
+	width:95%;
+	height:90%;
+}
+.game-list-wrap .disable-table td{
+	background-color:#f3f2f4;
+}
+
+.game-list-wrap .game-list .select {
+	background-color:#ffcb00;
+}
+
+.game-list-wrap .game-list .empty-table {
+	height:100%;
+}
+.game-list-wrap .game-list .empty-table td{
+	background-color:#f7fff5;
+	font-size:30px;
+	font-family:ng-eb;
+	vertial-align:middle;
+	text-align:center;
+}
+
+.game-list-wrap span.win {
+	font-weight:bolder;
+	color:red;
+}
+
+.content-list-pager {
+	width:100%;
+	padding:5px 0px 5px 0px;
+	margin-left:0px;
+	margin-right:0px;
+}
+.list-top {
+	height:40px;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+.list-top .btn {
+	width:31px;
+	height:31px;
+	margin-right:5px;
+	border: 1px solid #dbdbdb;
+	border-radius:1px;
+	background-image: url("images/list-settings-line.png");
+	background-repeat: no-repeat;
+	background-position:auto;
+	background-size:28px
+}
+.game-type .input-group-text {
+	width:70px;
+	background-color:#ffb247;
+	color:#fff;
+}
+.team-type .input-group-text {
+	width:60px;
+	background-color:#ffb247;
+	color:#fff;
+}

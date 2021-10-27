@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hiball.sql.code">
+	<cache/>
+	
+	<resultMap id="memberResultMap" type="memberInfo">
+		<id column="MNO" property="no"/>
+		<result column="MNAME" property="name"/>
+		<result column="EMAIL" property="email"/>
+		<result column="ID" property="id"/>
+		<result column="PWD" property="password"/>
+		<result column="CRE_DATE" property="createdDate"/>
+		<result column="MOD_DATE" property="modifiedDate" javaType="java.sql.Date"/>	
+	</resultMap>
+	
+	<resultMap id="boardResultMap" type="boardInfo">
+		<id column="MNO" property="no"/>
+		<result column="MNAME" property="name"/>
+		<result column="TITLE" property="title"/>
+		<result column="STORY" property="story"/>
+		<result column="CRE_DATE" property="createdDate"/>
+	</resultMap>
+	
+	<resultMap id="codeResultMap" type="codeDomain">
+		<id property="codeId" 				column="code_id"/>
+		<result property="name" 			column="name"/>
+	</resultMap>
+	
+	<resultMap id="playerResultMap" type="playerInfo">
+		<id property="playerId" 			column="player_id"/>
+		<result property="playerName" 		column="player_name"/>
+		<result property="firstName"        column="first_name"/>
+		<result property="lastName"         column="last_name"/>
+		<result property="shortName"        column="short_name"/>
+		<result property="teamId"			column="team_id"/>
+		<result property="teamName"			column="team_name"/>
+		<result property="battingHand" 		column="batting_hand"/>
+		<result property="pitchingHand"		column="pitching_hand"/>
+		<result property="position"			column="position"/>
+		<result property="backnumber"		column="backnumber"/>
+	</resultMap>
+	
+	<resultMap id="teamResultMap" type="codeDomain">
+		<id property="teamId" 			        column="team_id"/>
+		<result property="teamName" 		    column="team_name"/>
+		<result property="shortTeamName"         column="short_team_name"/>
+		<result property="engTeamName"          column="eng_team_name"/>
+	</resultMap>
+	
+	<select id="selectCodeInfo" parameterType="codeParam" resultMap="codeResultMap">
+		SELECT code_id, name
+		  FROM codes
+		 WHERE 1=1
+		<if test="pCodeId!=null and pCodeId!=0">
+		   AND p_code_id = #{pCodeId}
+		</if>
+		<if test="name!=null and name!= ''">
+		   AND  name like '%${name}%'
+		</if>
+		ORDER BY code_id
+	</select>
+	
+	<select id="selectPlayerInfo" parameterType="codeParam" resultMap="playerResultMap">
+		SELECT 	CASE WHEN roster_type_code IN (5102, 5104) THEN 'pitcher' ELSE 'batter' END position, 
+				player_id, player_name, first_name, last_name,
+				concat(substring(first_name, 1, 1),'.',substring(substring_index(first_name, '-', -1), 1,1)) short_name, 
+				team_id, batting_hand, pitching_hand, backnumber
+		  FROM 	hiball_game_schedule hgs 	
+			INNER JOIN 	hiball_game_roster hgr 
+					ON (hgs.game_info_id = hgr.game_info_id)
+			INNER JOIN 	members mem
+					ON (hgr.player_id = mem.members_id)
+			LEFT OUTER JOIN (
+				SELECT 	members_id, SUBSTRING_INDEX(GROUP_CONCAT(backnumber ORDER BY sdate SEPARATOR '/'), '/', -1) backnumber
+				  FROM 	backnumber
+				GROUP BY members_id
+		    ) bn
+					ON (hgr.player_id = bn.members_id)
+		 WHERE hgr.season = #{year}
+		   AND hgs.game_type_code = #{gameType}
+		<if test="teamId != null and teamId.toString() != '' and teamId != 0">
+		   AND team_id = #{teamId}
+		</if>
+		GROUP BY team_id, player_id, player_name, backnumber
+	</select>
+	
+	<select id="selectTeamInfo" parameterType="codeParam" resultMap="teamResultMap">
+		SELECT team_id, name team_name, eng_short_name short_team_name, eng_full_name eng_team_name
+		  FROM team_info
+		 WHERE 1=1
+		   AND visible_yn = 'Y'
+   		   AND team_type IN ('KBO', 'FUTURES', 'KBO/FUTURES', 'ETC')
+		<if test="gameType == 4201">
+		   AND team_type like 'KBO%'
+		</if>
+		<if test="gameType == 4206">
+		   AND team_type like '%FUTURES%'
+		</if>
+		ORDER BY orders
+	</select>
+	
+	<select id="selectMemberInfo" parameterType="codeParam" resultMap="memberResultMap">
+		SELECT MNO, MNAME, EMAIL, CRE_DATE
+		  FROM MEM_AD
+	</select>
+	
+	<insert id="addMemberInfo" parameterType="codeParam">
+		INSERT INTO MEM_AD(MNAME,EMAIL,ID,PWD,CRE_DATE,MOD_DATE)
+		VALUES (#{name},#{email},#{id},#{password},now(),now())
+	</insert>
+	
+	<select id="updateMemberInfo" parameterType="codeParam" resultMap="memberResultMap">
+		SELECT MNO,MNAME,EMAIL,ID,PWD,CRE_DATE
+		FROM MEM_AD
+		WHERE MNO=#{no}
+	</select>
+	
+	<update id="updateNewMemberInfo" parameterType="codeParam">
+		UPDATE MEM_AD SET
+			MNAME=#{name},
+			EMAIL=#{email},
+			ID=#{id},
+			PWD=#{password}
+		WHERE MNO=#{no}
+	</update>
+	
+	<delete id="deleteMemberInfo" parameterType="codeParam">
+		DELETE FROM MEM_AD
+		WHERE MNO=#{no}
+	</delete>
+	
+	<select id="selectBoardInfo" parameterType="codeParam" resultMap="boardResultMap">
+		SELECT MNO,TITLE,CRE_DATE,STORY,MNAME
+		  FROM BOARDS
+		 WHERE MNAME=#{name} 
+	</select>
+	
+	<insert id="addBoardInfo" parameterType="codeParam">
+	 	INSERT INTO BOARDS(MNAME,TITLE,STORY,CRE_DATE)
+		VALUES(#{name},#{title},#{story},now())
+	</insert>
+	
+	
+	<select id="updateBoardInfo" parameterType="codeParam" resultMap="boardResultMap">
+	   SELECT MNO,TITLE,STORY
+		 FROM BOARDS
+		WHERE MNO=#{no}
+	</select>
+	
+	<update id="updateNewBoardInfo" parameterType="codeParam">
+		UPDATE BOARDS SET
+			TITLE=#{title},
+			STORY=#{story}
+		WHERE MNO=#{no}
+	</update>
+	
+	<delete id="deleteBoardInfo" parameterType="codeParam">
+		DELETE FROM BOARDS
+		WHERE MNO=#{no}
+	</delete>
+	
+	<select id="findIdInfo" parameterType="codeParam" resultMap="memberResultMap">
+		SELECT MNAME,ID
+		  FROM MEM_AD
+		 WHERE MNAME=#{name} AND EMAIL=#{email}
+	</select>
+	
+	<select id="findPwInfo" parameterType="codeParam" resultMap="memberResultMap">
+		SELECT MNAME,PWD
+		  FROM MEM_AD
+		 WHERE MNAME=#{name} AND EMAIL=#{email} AND ID=#{id}
+	</select>
+</mapper>

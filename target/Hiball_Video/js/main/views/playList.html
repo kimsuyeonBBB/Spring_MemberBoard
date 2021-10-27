@@ -1,0 +1,84 @@
+<% 
+	var preBatter = '';
+	var prePitcher = '';
+%>
+<table class="player-list">
+	<tr>
+		<td class="title" width="10%">Seq.</td>
+		<td class="title" width="30%">구종</td>
+		<td class="title" width="30%">구속</td>
+		<td class="title" width="30%">결과</td>
+	</tr>
+	<tr>
+		<td id="videoClipList" colspan="4">
+			<div style="font-size:11px; overflow-y:scroll; height:100%; width:100%; border:1px solid #ededed;">
+		<%if (_.size(playList)>0) { var list = playList[inning];%>
+			<%_.each(list, function (playInfo) {%>
+				<% if ((preBatter==''|| preBatter!=playInfo.batterName) || (prePitcher==''||prePitcher!=playInfo.pitcherName)) { %>
+				<table class="clip_list title-clip" style="width:100%;" name="videoClips" rel="<%=playInfo.inning%><%=playInfo.inningTb%><%=playInfo.batInningTurn%><%=playInfo.batPitchSeq%>">
+					<tr>
+						<td class="title title-single" colspan="4"><%=inning%>회<%if(playInfo.inningTb==0){%>초<%}else{%>말<%}%> <%=playInfo.batInningTurn%>번째 
+						<%=playInfo.pitcherName%>(<%=playInfo.pitchingHand%>) vs.<%=playInfo.batterName%>(<%=playInfo.battingHand%>)</td>
+					</tr>
+					<tr>
+						<td width="10%"><%=playInfo.batPitchSeq%>(<%=playInfo.pureBatPitchSeq%>)</td>
+					<%if (playInfo.checkBase == null || playInfo.checkBase == 0) {%>
+						<td width="30%"><%=playInfo.ballCodeName%></td>
+						<td width="30%"><%=playInfo.ballSpeed%> Km/h</td>
+						<td width="30%"><%=playInfo.hitResultName%></td>
+					<%} else {%>
+						<td colspan='3'>
+							<% if(playInfo.checkBase == 1) {%>
+								1루견제
+							<%} else if (playInfo.checkBase==2) {%>
+								2루견제
+							<%} else if (playInfo.checkBase==3) {%>
+								3루견제
+							<%} else if (playInfo.checkBase==21) {%>
+								포수 - 1루 견제
+							<%} else if (playInfo.checkBase==22) {%>
+								포수 - 2루 견제
+							<%} else if (playInfo.heckBase==23) {%>
+								포수 - 3루 견제
+							<%}%>
+						</td>
+					<%}%>
+					</tr>
+				</table>
+				<% } else {%>
+				<table class="clip_list" name="videoClips" rel="<%=playInfo.inning%><%=playInfo.inningTb%><%=playInfo.batInningTurn%><%=playInfo.batPitchSeq%>">
+					<tr>
+						<td width="10%"><%=playInfo.batPitchSeq%>(<%=playInfo.pureBatPitchSeq%>)</td>
+					<%if (playInfo.checkBase == null || playInfo.checkBase == 0) {%>
+						<td width="30%"><%=playInfo.ballCodeName%></td>
+						<td width="30%"><%=playInfo.ballSpeed%> Km/h</td>
+						<td width="30%"><%=playInfo.hitResultName%></td>
+					<%} else {%>
+						<td colspan='3'>
+							<% if(playInfo.checkBase == 1) {%>
+								1루견제
+							<%} else if (playInfo.checkBase==2) {%>
+								2루견제
+							<%} else if (playInfo.checkBase==3) {%>
+								3루견제
+							<%} else if (playInfo.checkBase==21) {%>
+								포수 - 1루 견제
+							<%} else if (playInfo.checkBase==22) {%>
+								포수 - 2루 견제
+							<%} else if (playInfo.checkBase==23) {%>
+								포수 - 3루 견제
+							<%}%>
+						</td>
+					<%}%>
+					</tr>
+				</table>
+				<%}
+				preBatter = playInfo.batterName;
+				prePitcher = playInfo.pitcherName;
+				%>
+			<%}); %>
+		<%}%>
+			</div>
+		</td>
+	</tr>
+</table>

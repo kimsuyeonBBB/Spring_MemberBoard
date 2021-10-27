@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hiball.sql.gameinfo.record">
+	<cache/>
+	<resultMap id="gamePlayerMap" type="playerInfo">
+		<result property="position" 	column="position"/>
+		<result property="playerId"		column="player_id"/>
+		<result property="playerName"	column="player_name"/>
+		<result property="backnumber"	column="backnumber"/>
+	</resultMap>
+	<resultMap id="gameScheduleResultMap"  type="gameInfo">
+		<result property="gameInfoId" 			column="game_info_id"/>
+		<result property="gameDay" 				column="game_day"/>
+		<result property="weekDay" 				column="week_day"/>
+		<result property="videoType"			column="video_type"/>
+		<result property="stadiumName" 			column="stadium"/>
+		<result property="weatherCode" 			column="weather_code"/>
+		<result property="weather" 				column="weather"/>
+		<result property="homeTeamId" 			column="home_team_id"/>
+		<result property="homeTeamName" 		column="home_team_name"/>
+		<result property="homeShortName"          column="home_short_name"/>
+		<result property="homeEngName"            column="home_eng_name"/>
+		<result property="homeBeginPitcherId"	column="home_begin_pitcher_id"/>
+		<result property="homeBeginPitcher" 	column="home_begin_pitcher"/>
+		<result property="homePitcherFirstName" column="home_pitcher_first_name"/>
+		<result property="homePitcherLastName"  column="home_pitcher_last_name"/>
+		<result property="homePitcherShortName" column="home_pitcher_short_name"/>
+		<result property="homePitcherBacknum"     column="home_pitcher_backnum"/>
+		<result property="homePitcherForeignerYn" column="home_pitcher_foreigner_yn"/>
+		<result property="awayTeamId" 			column="away_team_id"/>
+		<result property="awayTeamName" 		column="away_team_name"/>
+		<result property="awayShortName"          column="away_short_name"/>
+        <result property="awayEngName"            column="away_eng_name"/>
+		<result property="awayBeginPitcherId" 	column="away_begin_pitcher_id"/>
+		<result property="awayBeginPitcher" 	column="away_begin_pitcher"/>
+		<result property="awayPitcherFirstName" column="away_pitcher_first_name"/>
+        <result property="awayPitcherLastName"  column="away_pitcher_last_name"/>
+        <result property="awayPitcherShortName" column="away_pitcher_short_name"/>
+        <result property="awayPitcherBacknum"   column="away_pitcher_backnum"/>
+        <result property="awayPitcherForeignerYn"   column="away_pitcher_foreigner_yn"/>
+		<result property="homeTeamScore" 		column="home_team_score"/>
+		<result property="awayTeamScore" 		column="away_team_score"/>
+		<result property="homePitcherResult" 	column="home_pitcher_result"/>
+		<result property="awayPitcherResult" 	column="away_pitcher_result"/>
+	</resultMap>
+	<resultMap id="videoInfoResultMap" type="videoRecord">
+		<result property="gameInfoId" 	column="game_info_id"/> 
+		<result property="season" 		column="season"/>
+		<result property="gameDay" 		column="game_day"/> 
+		<result property="videoType"	column="video_type"/> 
+		<result property="videoSeq" 	column="game_video_type_seq"/>
+		<result property="homeTeamId" 	column="home_team_id"/> 
+		<result property="homeTeamName" column="home_team_name"/> 
+		<result property="awayTeamId" 	column="away_team_id"/>
+		<result property="awayTeamName" column="away_team_name"/>
+	</resultMap>
+	<resultMap id="gameVideoResultMap" type="gameVideoRecord">
+		<result property="videoPath" 			column="video_path"/>
+		<result property="videoPath2"			column="video_path2"/>
+		<result property="googleVideoPath"      column="google_video_path"/>
+		<result property="localPath"			column="local_path"/>
+		<result property="downloadFilename" 	column="download_filename"/>
+		<result property="gameInfoId"			column="game_info_id"/>
+		<result property="gameRecordId"			column="game_record_id"/>
+		<result property="initialPitchTime" 	column="initial_pitch_time"/>
+		<result property="nvrInitialPitchTime"	column="nvr_initial_pitch_time"/>
+		<result property="taggingGapTime"		column="tagging_gap_time"/> 
+		<result property="pitchTime"			column="pitch_time"/>
+		<result property="videoType"			column="video_type"/> 
+		<result property="videoSeq"				column="game_video_type_seq"/>
+		<result property="season"				column="season"/>
+		<result property="gameDay"				column="game_day"/>
+		<result property="inning"				column="inning"/>
+		<result property="inningTb"				column="inning_tb"/>
+		<result property="batPitchSeq"			column="bat_pitch_seq"/>
+		<result property="pureBatPitchSeq"		column="pure_bat_pitch_seq"/>
+		<result property="batInningTurn"		column="bat_inning_turn"/>
+		<result property="inningPitchSeq"		column="inning_pitch_seq"/>
+		<result property="batterId"				column="batter_id"/>
+		<result property="batterName"			column="batter_name"/>
+		<result property="batterFirstName"     column="batter_first_name"/>
+        <result property="batterLastName"      column="batter_last_name"/>
+        <result property="batterShortName"     column="batter_short_name"/> 
+		<result property="batterBacknum"		column="batter_backnum"/>
+		<result property="batterForeignerYn"    column="batter_foreigner_yn"/>
+		<result property="pitcherId"			column="pitcher_id"/>
+		<result property="pitcherName"			column="pitcher_name"/> 
+		<result property="pitcherFirstName"     column="pitcher_first_name"/>
+		<result property="pitcherLastName"      column="pitcher_last_name"/>
+		<result property="pitcherShortName"     column="pitcher_short_name"/>
+		<result property="pitcherBacknum"		column="pitcher_backnum"/>
+		<result property="pitcherForeignerYn"   column="pitcher_foreigner_yn"/>
+		<result property="catcherId"			column="catcher_id"/>
+		<result property="catcherName"			column="catcher_name"/>
+		<result property="catcherFirstName"     column="catcher_first_name"/>
+        <result property="catcherLastName"      column="catcher_last_name"/>
+        <result property="catcherShortName"     column="catcher_short_name"/>
+		<result property="catcherBacknum"		column="catcher_backnum"/>
+		<result property="ballSpeed"			column="ball_speed"/> 
+		<result property="ballCode"				column="ball_code"/> 
+		<result property="ballCodeName"			column="ball_code_name"/>
+		<result property="ballTypeShortName"    column="ball_type_short_name"/>
+		<result property="ballTypeFullName"     column="ball_type_full_name"/> 
+		<result property="batterTeamId"			column="batter_team_id"/>
+		<result property="batterTeamName"		column="batter_team_name"/>
+		<result property="batterTeamShortName"  column="batter_team_short_name"/>
+		<result property="batterTeamEngName"    column="batter_team_eng_name"/>
+		<result property="pitcherTeamId"		column="pitcher_team_id"/>
+		<result property="pitcherTeamName"		column="pitcher_team_name"/>  
+		<result property="pitcherTeamShortName"  column="pitcher_team_short_name"/>
+        <result property="pitcherTeamEngName"    column="pitcher_team_eng_name"/>
+		<result property="beforeRunnerState"	column="before_runner_state"/>
+		<result property="beforeOutCount"		column="before_out_count"/>
+		<result property="beforeStrikeCount"	column="before_strike_count"/>
+		<result property="beforeBallCount"		column="before_ball_count"/>
+		<result property="beforeScoreGap"		column="before_score_gap"/>
+		<result property="outCount"             column="out_count"/>
+        <result property="strikeCount"          column="strike_count"/>
+        <result property="ballCount"            column="ball_count"/>
+        <result property="scoreGap"             column="score_gap"/>
+		<result property="hitTypeCode"			column="hit_type_code"/>
+		<result property="hitTypeName"			column="hit_type_name"/>
+		<result property="hitResultCode"		column="hit_result_code"/>
+		<result property="hitResultName"		column="hit_result_name"/>
+		<result property="hitResultShortName"   column="hit_result_short_name"/>
+		<result property="hitResultFullName"    column="hit_result_full_name"/>
+		<result property="checkBase"			column="check_base"/>
+		<result property="pitchingForm"			column="pitching_form"/>
+		<result property="b1b"					column="b1b"/>
+		<result property="b2b"					column="b2b"/>
+		<result property="b3b"					column="b3b"/>
+		<result property="hr"					column="hr"/>
+		<result property="ghr"					column="ghr"/>
+		<result property="hit"					column="hit"/> 
+		<result property="bb"					column="bb"/> 
+		<result property="ibb"					column="ibb"/> 
+		<result property="hbp"					column="hbp"/> 
+		<result property="go"					column="go"/> 
+		<result property="fo"					column="fo"/> 
+		<result property="gdp"					column="gdp"/> 
+		<result property="so"					column="so"/>
+		<result property="taggingYn"			column="tagging_yn"/>
+		<result property="battingHand"			column="batting_hand"/>
+		<result property="pitchingHand"			column="pitching_hand"/>
+		<result property="hitTypeCode"			column="hit_type_code"/>
+		<result property="battedBallRank"		column="batted_ball_rank"/>		
+		<result property="lastPitchYn"			column="last_pitch_yn"/>
+	</resultMap>
+	
+	<select id="selectPlayerList" parameterType="gameScheduleParam" resultMap = "gamePlayerMap">
+		SELECT 	CASE WHEN roster_type_code IN (5102, 5104) THEN 'pitcher' ELSE 'batter' END position, 
+				player_id, player_name, first_name, last_name,
+                concat(substring(first_name, 1, 1),'.',substring(substring_index(first_name, '-', -1), 1,1)) short_name, 
+                batting_hand, pitching_hand, backnumber 
+		  FROM 	hiball_game_schedule hgs 	
+			INNER JOIN 	hiball_game_roster hgr 
+					ON (hgs.game_info_id = hgr.game_info_id)
+			INNER JOIN 	members mem
+					ON (hgr.player_id = mem.members_id)
+			LEFT OUTER JOIN (
+				SELECT 	members_id, SUBSTRING_INDEX(GROUP_CONCAT(backnumber ORDER BY sdate SEPARATOR '/'), '/', -1) backnumber
+				  FROM 	backnumber
+				GROUP BY members_id
+		    ) bn
+					ON (hgr.player_id = bn.members_id)
+		 WHERE hgr.season = #{year}
+		<choose>
+			<when test="gameType == 4210">
+		   AND hgs.game_type_code IN (4202, 4203, 4204, 4205)	
+			</when>		
+			<otherwise>
+		   AND hgs.game_type_code = #{gameType}
+			</otherwise>
+		</choose>
+		<if test="teamId != null and teamId.toString() != '' and teamId != 0">
+		   AND team_id = #{teamId}
+		</if>
+		GROUP BY player_id, player_name, backnumber
+	</select>
+	<select id="selectGameSheduleInfo" parameterType="gameScheduleParam" resultMap="gameScheduleResultMap">
+		SELECT 	hgs.game_info_id, DATE_FORMAT(game_day, '%m/%d') game_day, video_type, 
+				week_day, stadium, weather_code, weather,
+				home_team_id, home_team_name, home_team.eng_short_name home_short_name, home_team.eng_full_name home_eng_name, 
+				home_begin_pitcher_id, home_begin_pitcher, home_pitcher.first_name home_pitcher_first_name, home_pitcher.last_name home_pitcher_last_name,
+		        CONCAT(substring(home_pitcher.first_name, 1, 1),
+		            CASE WHEN INSTR(home_pitcher.first_name, '-') != 0 THEN CONCAT('.',SUBSTRING(SUBSTRING_INDEX(home_pitcher.first_name, '-', -1), 1,1)) 
+		                ELSE ''
+		            END
+		        ) home_pitcher_short_name, home_pitcher_num.backnumber home_pitcher_backnum,
+		        home_pitcher.foreigner_yn home_pitcher_foreigner_yn,
+		        away_team_id, away_team_name, away_team.eng_short_name away_short_name, away_team.eng_full_name away_eng_name, 
+		        away_begin_pitcher_id, away_begin_pitcher, away_pitcher.first_name away_pitcher_first_name, away_pitcher.last_name away_pitcher_last_name,
+		        CONCAT(substring(away_pitcher.first_name, 1, 1),
+		            CASE WHEN INSTR(away_pitcher.first_name, '-') != 0 THEN CONCAT('.',SUBSTRING(SUBSTRING_INDEX(away_pitcher.first_name, '-', -1), 1,1)) 
+		                ELSE ''
+		            END
+		        ) away_pitcher_short_name, away_pitcher_num.backnumber away_pitcher_backnum,
+		        away_pitcher.foreigner_yn away_pitcher_foreigner_yn,
+		        home_team_score, away_team_score, home_pitcher_result, away_pitcher_result
+          FROM  hiball_game_schedule hgs
+            INNER JOIN members home_pitcher
+                    ON (hgs.home_begin_pitcher_id = home_pitcher.members_id)
+		    INNER JOIN members away_pitcher
+		            ON (hgs.away_begin_pitcher_id = away_pitcher.members_id)
+		    INNER JOIN team_info home_team
+		            ON (hgs.home_team_id = home_team.team_id)
+		    INNER JOIN team_info away_team
+		            ON (hgs.away_team_id = away_team.team_id)
+		    INNER JOIN player_backnumber home_pitcher_num 
+                    ON (hgs.home_begin_pitcher_id = home_pitcher_num.members_id)
+            INNER JOIN player_backnumber away_pitcher_num
+                    ON (hgs.away_begin_pitcher_id = away_pitcher_num.members_id)
+			INNER JOIN (
+				SELECT	hgr.game_info_id, GROUP_CONCAT(video_type ORDER BY video_type SEPARATOR '/') video_type 
+				  FROM 	(
+						SELECT 	game_info_id, game_type, season
+						  FROM 	hiball_game_record
+						 WHERE	game_type = #{gameType}
+						   AND	season = #{season}
+						<if test="position == 'batter'">
+						   AND	batter_team_id = #{teamId}
+							<if test="oppTeamId != null and oppTeamId.toString() != '' and oppTeamId != 0">
+						   AND	pitcher_team_id = #{oppTeamId}
+							</if>
+						</if>
+						<if test="position == 'pitcher'">
+						   AND	pitcher_team_id = #{teamId}
+							<if test="oppTeamId != null and oppTeamId.toString() != '' and oppTeamId != 0">
+						   AND	batter_team_id = #{oppTeamId}
+							</if>
+						</if>
+						<if test="checkbase">
+						   AND	check_base != 0
+						</if>
+						<if test="checkbases!=null and checkbases.length != 0">
+						   AND	check_base IN
+						   	<foreach collection="checkbases" item="cb" open="(" close=")" separator=",">
+						   		#{cb}
+						   	</foreach>
+						</if>
+						<if test="innings!=null and innings.length != 0">
+						   AND inning IN 
+							<foreach collection="innings" item="inning" open="(" close=")" separator=",">
+								#{inning}
+							</foreach>
+						</if>
+						<if test="ballCodes !=null and ballCodes.length != 0">
+						   AND ball_code IN
+							<foreach collection="ballCodes" item="ballCode" open="(" close=")" separator=",">
+								#{ballCode}
+							</foreach>
+						</if>
+						<if test="runnerStatus !=null and runnerStatus.length != 0">
+						   AND before_runner_state IN
+							<foreach collection="runnerStatus" item="runnerState" open="(" close=")" separator=",">
+								#{runnerState}
+							</foreach>
+						</if>
+						<if test="ballCounts !=null and ballCounts.length != 0">
+						   AND CONCAT(before_ball_count, '-', before_strike_count) IN
+							<foreach collection="ballCounts" item="ballCount" open="(" close=")" separator=",">
+								#{ballCount}
+							</foreach>
+						</if>
+						<if test="hitTypes !=null and hitTypes.length != 0">
+						   AND hit_type_code IN
+							<foreach collection="hitTypes" item="hitType" open="(" close=")" separator=",">
+								#{hitType}
+							</foreach>
+						</if>
+						<if test="hitResults !=null and hitResults.length != 0">
+						   AND hit_result_code IN
+							<foreach collection="hitResults" item="hitResult" open="(" close=")" separator=",">
+								#{hitResult}
+							</foreach>
+						</if>
+						<choose>
+							<when test="position == 'batter'">
+								<if test="playerIds!=null and playerIds.length != 0">
+						   AND batter_id IN 
+							   		<foreach collection="playerIds" item="playerId" open="(" close=")" separator=",">
+								#{playerId}
+									</foreach>
+						  		</if>
+								<if test="oppPlayerIds!=null and oppPlayerIds.length != 0">
+						   AND pitcher_id IN 
+							   		<foreach collection="oppPlayerIds" item="playerId" open="(" close=")" separator=",">
+								#{playerId}
+									</foreach>
+						  		</if>
+							</when>
+							<when test="position == 'pitcher'">
+						   <if test="playerIds!=null and playerIds.length != 0">
+						   AND pitcher_id IN 
+							   		<foreach collection="playerIds" item="playerId" open="(" close=")" separator=",">
+								#{playerId}
+									</foreach>
+						  		</if>
+								<if test="oppPlayerIds!=null and oppPlayerIds.length != 0">
+						   AND batter_id IN 
+							   		<foreach collection="oppPlayerIds" item="playerId" open="(" close=")" separator=",">
+								#{playerId}
+									</foreach>
+						  		</if>
+							</when>
+						</choose>
+						GROUP BY game_info_id
+					)  hgr  
+					LEFT OUTER JOIN  (
+						SELECT 	game_info_id, CONCAT(IFNULL(video_type, ''), IFNULL(game_video_type_seq, '')) video_type
+						  FROM 	hiball_video_info
+						 WHERE 	del_yn = 'N'
+						   AND  season = #{season}
+						   AND	download_filename != '' 
+						   AND 	server_filename != ''
+						GROUP BY game_info_id, CONCAT(IFNULL(video_type, ''), IFNULL(game_video_type_seq, ''))
+					) video_info
+							ON (hgr.game_info_id = video_info.game_info_id) 
+				GROUP BY game_info_id
+			) record 	
+					ON (hgs.game_info_id = record.game_info_id)
+		ORDER BY game_day DESC
+	</select>
+	
+	<select id="selectVideoInfo" parameterType="gameScheduleParam" resultMap="videoInfoResultMap">
+		SELECT 	game.game_info_id, game.season, game.game_day, 
+				CONCAT(IFNULL(video_type, ''), IFNULL(game_video_type_seq, '')) video_type,
+				home_team_id, home_team_name, away_team_id, away_team_name
+		  FROM 	hiball_game_schedule game
+			INNER JOIN hiball_video_info video_info
+					ON(game.game_info_id = video_info.game_info_id)
+		 WHERE 1=1
+		   AND	video_info.del_yn = 'N'
+		<if test="gameInfoIds!=null and gameInfoIds.length != 0">
+		   AND 	game.game_info_id IN 
+		   	<foreach collection ="gameInfoIds" item="gameId" open="(" close=")" separator=",">
+		   		#{gameId}
+		   	</foreach>
+		</if>
+	</select>
+	<select id="selectGameVideoRecord" parameterType="gameScheduleParam" resultMap="gameVideoResultMap" fetchSize="1000">
+		SELECT 	CONCAT('http://', video_domain, '/',
+					CASE WHEN hgr.game_type IN (4201,4202,4203,4204,4205,4207,4208) THEN 'kbo' ELSE 'futures' END, '/',
+					video_type, '/', 
+		            video_info.season, '/', 
+		            server_filename, 
+		            '/mp4hls/index.m3u8'
+				) video_path, 
+				CONCAT('http://hanwha_media.storage.googleapis.com/mobile/',
+	            CASE WHEN hgr.game_type IN (4201,4202,4203,4204,4205,4207,4208) THEN 'kbo' ELSE 'futures' END, '/',
+		            video_type, '/', 
+		            video_info.season, '/', 
+		            substring_index(server_filename, '.', 1), '/', 
+		            substring_index(server_filename, '.', 1), '.m3u8'
+		        ) google_video_path,
+				video_info.game_info_id, hgr.season, hgr.game_day,
+				CAST(hgr.inning AS UNSIGNED) inning, hgr.inning_tb, 
+				CAST(hgr.bat_inning_turn AS UNSIGNED) bat_inning_turn,CAST(hgr.bat_pitch_seq AS UNSIGNED) bat_pitch_seq, hgr.pure_bat_pitch_seq,
+				hgr.inning_pitch_seq,
+				video_info.initial_pitch_time, video_info.nvr_initial_pitch_time, video_info.nvr_initial_pitch_time - video_info.initial_pitch_time tagging_gap_time, 
+				record_time.pitch_time, c_video_type video_type,
+		        hgr.batter_id, hgr.batter_name, hgr.batter_first_name, hgr.batter_last_name, batter_num.backnumber batter_backnum,
+		        batter.foreigner_yn batter_foreigner_yn,
+                CONCAT(substring(hgr.batter_first_name, 1, 1),
+                    CASE WHEN INSTR(hgr.batter_first_name, '-') &lt;> 0 THEN CONCAT('.',SUBSTRING(SUBSTRING_INDEX(hgr.batter_first_name, '-', -1), 1,1)) 
+                        ELSE ''
+                    END
+                ) batter_short_name,
+                hgr.pitcher_id, hgr.pitcher_name, hgr.pitcher_first_name, hgr.pitcher_last_name, pitcher_num.backnumber pitcher_backnum,
+                pitcher.foreigner_yn pitcher_foreigner_yn,
+                CONCAT(substring(hgr.pitcher_first_name, 1, 1),
+                    CASE WHEN INSTR(hgr.pitcher_first_name, '-') &lt;> 0 THEN CONCAT('.',SUBSTRING(SUBSTRING_INDEX(hgr.pitcher_first_name, '-', -1), 1,1)) 
+                        ELSE ''
+                    END
+                ) pitcher_short_name,
+                hgr.catcher_id, hgr.catcher_name, catcher_num.backnumber catcher_backnum, 
+                CONCAT(substring(hgr.catcher_first_name, 1, 1),'.',substring(substring_index(hgr.catcher_first_name, '-', -1), 1,1)) catcher_short_name,
+				CASE WHEN ds_ball_speed IS NULL OR ds_ball_speed = '' THEN ball_speed ELSE ds_ball_speed END ball_speed, 
+				CASE WHEN ds_ball_code IS NULL OR ds_ball_code = '' THEN ball_code ELSE ds_ball_code END ball_code, 
+				CASE WHEN ds_ball_code_name IS NULL OR ds_ball_code_name = '' THEN ball_code_name ELSE ds_ball_code_name END ball_code_name, 
+				ball_type.eng_short_name ball_type_short_name, ball_type.eng_full_name ball_type_full_name,
+				hgr.batter_team_id, hgr.batter_team_name, batter_team.eng_short_name batter_team_short_name, batter_team.eng_full_name batter_team_eng_name, 
+				hgr.pitcher_team_id, hgr.pitcher_team_name, pitcher_team.eng_short_name pitcher_team_short_name, pitcher_team.eng_full_name pitcher_team_eng_name, 
+				hgr.before_runner_state, hgr.before_out_count, hgr.before_strike_count, hgr.before_ball_count, hgr.before_score_gap,
+				hgr.out_count, hgr.strike_count, hgr.ball_count, hgr.score_gap,
+				hgr.hit_type_code, hgr.hit_type_name, hgr.check_base, hgr.hit_result_code, 
+				CASE WHEN hgr.hit_result_code = 6601 THEN hit_result_name ELSE hgr.hit_result_code_value END hit_result_name, 
+				get_eng_full_hit_result_value(hgr.hit_result_code, hgr.hit_course_code, CASE WHEN hgr.hit_result_code = 6601 THEN hit_result_name ELSE hgr.hit_result_code_value END) hit_result_full_name,
+                get_eng_short_hit_result_value(hgr.hit_result_code, hgr.hit_course_code, CASE WHEN hgr.hit_result_code = 6601 THEN hit_result_name ELSE hgr.hit_result_code_value END) hit_result_short_name,
+				CASE WHEN record_time.season IS NULL THEN false ELSE true END tagging_yn,
+				hgr.batting_hand, hgr.pitching_hand, hgr.batted_ball_rank, hgr.last_pitch_yn
+		  FROM  (
+		  		SELECT *, CONCAT(IFNULL(video_type, ''), IFNULL(game_video_type_seq, '')) c_video_type
+		          FROM  hiball_video_info
+				 WHERE  del_yn = 'N'
+				   AND 	CONCAT(game_info_id, '_', IFNULL(video_type, ''), IFNULL(game_video_type_seq, '')) IN 
+				   <foreach collection="gameInfoIds" item="gameId" open="(" close=")" separator=",">
+				   	#{gameId}
+				   </foreach>
+				   AND 	download_filename != '' 
+				   AND 	server_filename != ''
+		  ) video_info 
+			LEFT OUTER JOIN hiball_record_time_info record_time
+					ON (	video_info.game_info_id = record_time.game_info_id ) 
+			INNER JOIN hiball_game_record  hgr
+					ON (	hgr.game_info_id 	= record_time.game_info_id
+						AND hgr.inning 			= record_time.inning
+						AND hgr.inning_tb 		= record_time.inning_tb
+						AND hgr.bat_inning_turn = record_time.bat_inning_turn
+						AND hgr.bat_pitch_seq 	= record_time.bat_pitch_seq
+					) 
+		    INNER JOIN members batter
+		            ON (hgr.batter_id = batter.members_id)
+		    INNER JOIN members pitcher
+		            ON (hgr.pitcher_id = pitcher.members_id)
+			INNER JOIN team_info pitcher_team
+                    ON (hgr.pitcher_team_id = pitcher_team.team_id)
+            INNER JOIN team_info batter_team
+                    ON (hgr.batter_team_id = batter_team.team_id)
+            LEFT OUTER JOIN codes ball_type
+                    ON (hgr.ball_code = ball_type.code_id)
+			INNER JOIN player_backnumber batter_num 
+					ON (hgr.batter_id = batter_num.members_id)
+			INNER JOIN player_backnumber pitcher_num
+					ON (hgr.pitcher_id = pitcher_num.members_id)
+			INNER JOIN player_backnumber catcher_num
+					ON (hgr.catcher_id = catcher_num.members_id)
+		 WHERE 	record_time.bat_pitch_seq IS NOT NULL
+		<if test="checkbase">
+		   AND	hgr.check_base != 0
+		</if>
+		<if test="checkbases != null and checkbases.length != 0">
+		   AND	hgr.check_base IN
+		   	<foreach collection="checkbases" item="cb" open="(" close=")" separator=",">
+		   		#{cb}
+		   	</foreach>
+		</if>
+		<if test="batterIds!=null and batterIds.length!=0">
+		   AND hgr.batter_id IN 
+			<foreach collection="batterIds" item="batterId" open="(" close=")" separator=",">
+				#{batterId}
+			</foreach>
+		</if>
+		<if test="pitcherIds!=null and pitcherIds.length!=0">
+		   AND hgr.pitcher_id IN 
+			<foreach collection="pitcherIds" item="pitcherId" open="(" close=")" separator=",">
+				#{pitcherId}
+			</foreach>
+		</if>
+		<if test="innings!=null and innings.length != 0">
+		   AND hgr.inning IN 
+			<foreach collection="innings" item="inning" open="(" close=")" separator=",">
+				#{inning}
+			</foreach>
+		</if>
+		<if test="ballCodes !=null and ballCodes.length != 0">
+		   AND hgr.ball_code IN
+			<foreach collection="ballCodes" item="ballCode" open="(" close=")" separator=",">
+				#{ballCode}
+			</foreach>
+		</if>
+		<if test="runnerStatus !=null and runnerStatus.length != 0">
+		   AND hgr.before_runner_state IN
+			<foreach collection="runnerStatus" item="runnerState" open="(" close=")" separator=",">
+				#{runnerState}
+			</foreach>
+		</if>
+		<if test="ballCounts !=null and ballCounts.length != 0">
+		   AND CONCAT(hgr.before_ball_count, '-', hgr.before_strike_count) IN
+			<foreach collection="ballCounts" item="ballCount" open="(" close=")" separator=",">
+				#{ballCount}
+			</foreach>
+		</if>
+		<if test="hitTypes !=null and hitTypes.length != 0">
+		   AND hgr.hit_type_code IN
+			<foreach collection="hitTypes" item="hitType" open="(" close=")" separator=",">
+				#{hitType}
+			</foreach>
+		</if>
+		<if test="hitResults !=null and hitResults.length != 0">
+		   AND hgr.hit_result_code IN
+			<foreach collection="hitResults" item="hitResult" open="(" close=")" separator=",">
+				#{hitResult}
+			</foreach>
+		</if>
+		ORDER BY game_day, inning, inning_tb, bat_inning_turn, bat_pitch_seq
+	 	LIMIT ${beginIdx}, ${listSize}
+	</select>
+</mapper>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hiball.web.gameinfo.record">
+	<resultMap id="gameScheduleResultMap"  type="gameInfo">
+		<result property="gameInfoId" column="game_info_id"/>
+		<result property="gameDay" column="game_day"/>
+		<result property="weekDay" column="week_day"/>
+		<result property="stadiumName" column="stadium"/>
+		<result property="weatherCode" column="weather_code"/>
+		<result property="weather" column="weather"/>
+		<result property="homeTeamId" column="home_team_id"/>
+		<result property="homeTeamName" column="home_team_name"/>
+		<result property="homeBeginPitcherId" column="home_begin_pitcher_id"/>
+		<result property="homeBeginPitcher" column="home_begin_pitcher"/>
+		<result property="awayTeamId" column="away_team_id"/>
+		<result property="awayTeamName" column="away_team_name"/>
+		<result property="awayBeginPitcherId" column="away_begin_pitcher_id"/>
+		<result property="awayBeginPitcher" column="away_begin_pitcher"/>
+		<result property="homeTeamScore" column="home_team_score"/>
+		<result property="awayTeamScore" column="away_team_score"/>
+		<result property="homePitcherResult" column="home_pitcher_result"/>
+		<result property="awayPitcherResult" column="away_pitcher_result"/>
+	</resultMap>
+	<resultMap id="videoInfoResultMap" type="videoRecord">
+		<result property="gameInfoId" 	column="game_info_id"/> 
+		<result property="season" 		column="season"/>
+		<result property="gameDay" 		column="game_day"/> 
+		<result property="videoType"	column="video_type"/> 
+		<result property="videoSeq" 	column="game_video_type_seq"/>
+		<result property="homeTeamId" 	column="home_team_id"/> 
+		<result property="homeTeamName" column="home_team_name"/> 
+		<result property="awayTeamId" 	column="away_team_id"/>
+		<result property="awayTeamName" column="away_team_name"/>
+	</resultMap>
+	<resultMap id="gameVideoResultMap" type="gameVideoRecord">
+		<result property="videoPath" 			column="video_path"/>
+		<result property="videoPath2"			column="video_path2"/>
+		<result property="localPath"			column="local_path"/>
+		<result property="downloadFilename" 	column="download_filename"/>
+		<result property="gameInfoId"			column="game_info_id"/>
+		<result property="gameRecordId"			column="game_record_id"/>
+		<result property="initialPitchTime" 	column="initial_pitch_time"/>
+		<result property="nvrInitialPitchTime"	column="nvr_initial_pitch_time"/>
+		<result property="taggingGapTime"		column="tagging_gap_time"/> 
+		<result property="pitchTime"			column="pitch_time"/>
+		<result property="videoType"			column="video_type"/> 
+		<result property="videoSeq"				column="game_video_type_seq"/>
+		<result property="season"				column="season"/>
+		<result property="gameDay"				column="game_day"/>
+		<result property="inning"				column="inning"/>
+		<result property="inningTb"				column="inning_tb"/>
+		<result property="batPitchSeq"			column="bat_pitch_seq"/>
+		<result property="pureBatPitchSeq"		column="pure_bat_pitch_seq"/>
+		<result property="batInningTurn"		column="bat_inning_turn"/>
+		<result property="batterId"				column="batter_id"/>
+		<result property="batterName"			column="batter_name"/> 
+		<result property="pitcherId"			column="pitcher_id"/>
+		<result property="pitcherName"			column="pitcher_name"/> 
+		<result property="catcherName"			column="catcher_name"/>
+		<result property="catcherId"			column="catcher_id"/>
+		<result property="ballSpeed"			column="ball_speed"/> 
+		<result property="ballCode"				column="ball_code"/> 
+		<result property="ballCodeName"			column="ball_code_name"/> 
+		<result property="batterTeamId"			column="batter_team_id"/>
+		<result property="batterTeamName"		column="batter_team_name"/>
+		<result property="pitcherTeamId"		column="pitcher_team_id"/>
+		<result property="pitcherTeamName"		column="pitcher_team_name"/>  
+		<result property="beforeRunnerState"	column="before_runner_state"/>
+		<result property="beforeOutCount"		column="before_out_count"/>
+		<result property="beforeStrikeCount"	column="before_strike_count"/>
+		<result property="beforeBallCount"		column="before_ball_count"/>
+		<result property="beforeScoreGap"		column="before_score_gap"/>
+		<result property="hitResultCode"		column="hit_result_code"/>
+		<result property="hitResultName"		column="hit_result_name"/>
+		<result property="checkBase"			column="check_base"/>
+		<result property="pitchingForm"			column="pitching_form"/>
+		<result property="b1b"					column="b1b"/>
+		<result property="b2b"					column="b2b"/>
+		<result property="b3b"					column="b3b"/>
+		<result property="hr"					column="hr"/>
+		<result property="ghr"					column="ghr"/>
+		<result property="hit"					column="hit"/> 
+		<result property="bb"					column="bb"/> 
+		<result property="ibb"					column="ibb"/> 
+		<result property="hbp"					column="hbp"/> 
+		<result property="go"					column="go"/> 
+		<result property="fo"					column="fo"/> 
+		<result property="gdp"					column="gdp"/> 
+		<result property="so"					column="so"/>
+		<result property="taggingYn"			column="tagging_yn"/>
+		<result property="battingHand"			column="batting_hand"/>
+		<result property="pitchingHand"			column="pitching_hand"/>
+		<result property="hitTypeCode"			column="hit_type_code"/>
+		<result property="battedBallRank"		column="batted_ball_rank"/>		
+	</resultMap>
+
+	<select id="selectGameSheduleInfo" parameterType="gameScheduleParam" resultMap="gameScheduleResultMap">
+		SELECT 	game_info_id, game_day, week_day, stadium, weather_code, weather,
+				home_team_id, home_team_name, home_begin_pitcher_id, home_begin_pitcher,
+				away_team_id, away_team_name, away_begin_pitcher_id, away_begin_pitcher,
+		        home_team_score, away_team_score, home_pitcher_result, away_pitcher_result
+		  FROM 	hiball_game_schedule
+		 WHERE 	season = #{year}
+		   AND (home_team_id = #{teamId} || away_team_id = #{teamId})
+		<if test="oppTeamId != null and oppTeamId.toString() != '' and oppTeamId != 0">
+		   AND (home_team_id = #{oppTeamId} || away_team_id = #{oppTeamId})
+		</if>
+		<if test="gameType!=null and gameType.toString() != ''">
+		   AND game_type_code = #{gameType}
+		</if>
+	</select>
+	<select id="selectVideoInfo" parameterType="gameScheduleParam" resultMap="videoInfoResultMap">
+		SELECT 	game.game_info_id, game.season, game.game_day, 
+				concat(video_type, game_video_type_seq) video_type,
+				home_team_id, home_team_name, away_team_id, away_team_name
+		  FROM 	hiball_game_schedule game
+			INNER JOIN hiball_video_info video_info
+					ON(game.game_info_id = video_info.game_info_id)
+		 WHERE game.game_info_id = #{gameInfoId}
+	</select>
+	<select id="selectGameVideoRecord" parameterType="gameScheduleParam" resultMap="gameVideoResultMap">
+		SELECT 	CONCAT(CASE WHEN video_info.season = 2017 THEN 'http://movie2017' ELSE 'http://movie' END,'.kbostats.net/video.php?videoType=', CASE WHEN video_type = 'broadCast' THEN video_type ELSE concat(video_type, game_video_type_seq) END, '&amp;season=', video_info.season, '&amp;gameDay=', replace(video_info.game_day, '-', ''), '&amp;gameName=', SUBSTRING(server_filename, INSTR(server_filename, '_') + 1, 5), '&amp;gameType=', CASE WHEN hgr.game_type = 4206 THEN 'FUTURES' ELSE 'KBO' END ) video_path,
+				CONCAT(CASE WHEN video_info.season = 2017 THEN 'http://movie2017' ELSE 'http://movie' END,'.kbostats.net/', video_type, '/', hgr.season, '/', server_filename) video_path2,
+				CONCAT('http://localhost:9224/', video_info.season, '/', video_info.server_filename) local_path,
+				download_filename, video_info.game_info_id, hgr.game_record_id,
+				video_info.initial_pitch_time, video_info.nvr_initial_pitch_time, video_info.nvr_initial_pitch_time - video_info.initial_pitch_time tagging_gap_time, 
+				record_time.pitch_time, concat(video_info.video_type, video_info.game_video_type_seq) video_type,
+				hgr.season, hgr.game_day, CAST(hgr.inning AS UNSIGNED) inning, hgr.inning_tb, 
+				CAST(hgr.bat_inning_turn AS UNSIGNED) bat_inning_turn,
+				hgr.bat_pitch_seq, hgr.pure_bat_pitch_seq,
+		        hgr.batter_id batter_members_id, hgr.batter_name, 
+		        hgr.pitcher_id pitcher_members_id, hgr.pitcher_name, 
+				hgr.catcher_name, hgr.catcher_id catcher_members_id,
+				CASE WHEN ds_ball_speed IS NULL OR ds_ball_speed = '' THEN ball_speed ELSE ds_ball_speed END ball_speed, 
+				CASE WHEN ds_ball_code IS NULL OR ds_ball_code = '' THEN ball_code ELSE ds_ball_code END ball_code, 
+				CASE WHEN ds_ball_code_name IS NULL OR ds_ball_code_name = '' THEN ball_code_name ELSE ds_ball_code_name END ball_code_name, 
+				hgr.batter_team_id, hgr.batter_team_name, hgr.pitcher_team_id, hgr.pitcher_team_name, 
+				hgr.before_runner_state, hgr.before_out_count, hgr.before_strike_count, hgr.before_ball_count, hgr.before_score_gap,
+				hgr.hit_result_code, hgr.hit_result_name, hgr.check_base, hgr.pitching_form,
+				single b1b, doubles b2b, triples b3b, home_runs hr, ground_home_runs ghr,
+				single+doubles+triples+home_runs+ground_home_runs hit, base_on_balls bb, intentional_walks ibb, hit_by_pitch hbp, ground_out go, fly_out fo, ground_into_double_plays gdp, strike_out so,
+				CASE WHEN record_time.season IS NULL THEN false ELSE true END tagging_yn,
+				hgr.batting_hand, hgr.pitching_hand, hgr.hit_type_code, hgr.batted_ball_rank
+		  FROM  hiball_video_info video_info 
+		LEFT OUTER JOIN hiball_record_time_info record_time
+				ON (	video_info.game_info_id = record_time.game_info_id ) 
+		INNER JOIN hiball_game_record  hgr
+				ON (	hgr.game_info_id 	= record_time.game_info_id
+					AND hgr.inning 			= record_time.inning
+					AND hgr.inning_tb 		= record_time.inning_tb
+					AND hgr.bat_inning_turn = record_time.bat_inning_turn
+					AND hgr.bat_pitch_seq 	= record_time.bat_pitch_seq
+				) 
+		 WHERE 	record_time.bat_pitch_seq IS NOT NULL
+		   AND 	video_info.game_info_id = #{gameInfoId}
+		   AND 	download_filename != '' 
+		   AND 	server_filename != ''
+		ORDER BY inning, inning_tb, bat_inning_turn, pitch_time
+	</select>
+</mapper>

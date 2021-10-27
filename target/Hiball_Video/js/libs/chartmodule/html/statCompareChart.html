@@ -1,0 +1,32 @@
+<!-- <table class="table table-condensed" id="chartFrame" style="padding:0px;">
+	<% if(isCompared) {%>
+		<tr>
+			<td align="right" colspan="2">
+				<table style="width:200px;">
+					<tr>
+						<td style="width:30px; background-color:#54565e"></td>
+						<td>열세</td>
+						<td style="width:30px; background-color:#eb421c"></td>
+						<td>우세</td>
+					</tr>
+				</table>
+            </td>
+		</tr>
+	<% }%>
+	<% _.each(categories, function(item, key){%>
+	<tr>
+		<th width="15%"><%=item%></th>
+		<td id="<%=drawArea%>_<%=key%>_chart"></td>
+	</tr>
+	<%});%>
+</table> -->
+
+<% if(isCompared) {%>
+<div class="col-md-12" id="chartFrame">
+	
+</div>
+<% } %>
+<% _.each(categories, function(item, key){ %>
+<div class="col-md-2 col-sm-2 col-xs-12"><%= item %></div>
+<div class="col-md-10 col-sm-10 col-xs-12" id="<%=drawArea%>_<%=key%>_chart"></div>
+<% }); %>

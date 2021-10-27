@@ -1,0 +1,45 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4 text-center">
+			<%= catcherText %>
+		</div>
+		<div class="col-md-4 col-md-offset-4 text-center">
+			<%= wholeText %>
+		</div>
+	</div>
+	<div class="row">
+		<div id="pitchZoneChart" class="col-md-4">
+		</div>
+		<div class="col-md-4">
+			<div class="row" id="summaryList">
+			</div>
+			<div class="row">
+				<table class="categoryList" align="center">
+					<tr>
+						<th colspan="4">선택된 Zone 의 S/B 판정비율</th>
+					</tr>
+					<tr>
+						<td colspan="4" align="center" class="notactive oncursor" id="wholeDisplay">전체</td>
+					</tr>
+					<tr>
+						<th colspan="2"><%= catcherName %>포수</th>
+						<th colspan="2">전체 포수</th>
+					</tr>
+					<tr>
+						<th width="25%">S 판정</th>
+						<th width="25%">B 판정</th>
+						<th width="25%">S 판정</th>
+						<th width="25%">B 판정</th>
+					</tr>
+					<tr>
+						<td align="center" name="sZoneVal" id="playerS">&nbsp;</td>
+						<td align="center" name="sZoneVal" id="playerB">&nbsp;</td>
+						<td align="center" name="sZoneVal" id="allS">&nbsp;</td>
+						<td align="center" name="sZoneVal" id="allB">&nbsp;</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div id="allPlayerPitchZoneChart" class="col-md-4"></div>
+	</div>
+</div>

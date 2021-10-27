@@ -1,0 +1,108 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="form-group col-sm-2 col-md-2 col-lg-2">
+			<label for="categoryBtn"></label>
+			<select class="form-control" id="categoryBtn">
+		    <% _.each(gridTitle, function(item){%>
+		    	<option value="<%= item.id%>"><%= item.title%></option>
+		    <%}); %>
+		    </select>
+		</div>
+		<div class="col-sm-10 col-md-10 col-lg-10">
+			<div class="row">
+				<div class="col-sm-1 col-md-1 col-lg-1">
+					<h4><span class="label label-default">
+						타격형태
+					</span></h4>
+				</div>
+				<div class="col-sm-11 col-md-11 col-lg-11">
+					<h5>
+					<!-- <button id="pitched" name="hitType" class="btn btn-default btn-xs">전체</button> -->
+					<!-- <button id="contact" name="hitType" class="btn btn-default btn-xs">타격</button>
+					<button id="standing" name="hitType" class="btn btn-default btn-xs">스탠딩</button>
+					<button id="swing" name="hitType" class="btn btn-default btn-xs">헛스윙</button> -->
+					<div class="col-sm-1 col-md-1 text-right" style="padding-left:0px;">
+						<label>타격<input id="contact" type="checkbox" name="hitType" checked="checked"></label>
+					</div>
+					<div class="col-sm-1 col-md-1 text-right" style="padding-left:0px;">
+						<label>스탠딩<input id="standing" type="checkbox" name="hitType"></label>
+					</div>
+					<div class="col-sm-1 col-md-1 text-right" style="padding-left:0px;">
+						<label>헛스윙<input id="swing" type="checkbox" name="hitType"></label>
+					</div>
+					</h5>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-1 col-md-1 col-lg-1">
+					<h4><span class="label label-default">
+						타격결과
+					</span></h4>
+				</div>
+				<div class="col-sm-11 col-md-11 col-lg-11">
+					<h5>
+					<div class="col-sm-1 col-md-1 text-right" style="padding-left:0px;">
+						<label>안타<input id="hitCate" type="checkbox" value="hit"></label>
+					</div>
+					<div class="col-sm-4 col-md-4">
+						<input name="hitResult" type="checkbox" value="6604"> 1루
+						<input name="hitResult" type="checkbox" value="6607"> 2루
+						<input name="hitResult" type="checkbox" value="6610"> 3루
+						<input name="hitResult" type="checkbox" value="6613"> 홈런
+					</div>
+					<div class="col-sm-1 col-md-1 text-right" style="padding-left:0px;">
+						<label>아웃<input id="outCate" type="checkbox" value="out"></label>
+					</div>
+					<div class="col-sm-3 col-md-3">
+						<input name="hitResult" type="checkbox" value="6605"> 땅볼아웃
+						<input name="hitResult" type="checkbox" value="6602"> 뜬공아웃
+					</div>
+					<div class="col-sm-2 col-md-2">
+						<input name="hitResult" type="checkbox" value="6601"> 파울
+					</div>
+					</h5>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="row">
+		<div id="pitchZoneChart" align="center" class="col-sm-5 col-md-5">
+		</div>
+		<div id="pitchZoneDetail" class="col-sm-2 col-sm-2">
+			<table class="table table-condensed">
+				<tr>
+					<th width="20%" class="text-center">구종</th>
+					<th width="40%" class="text-center">구사비율<br>(구종횟수/<br>전체)</th>
+					<th width="40%" class="text-center">타격<br>(타격/<br>구종횟수)</th>
+				</tr>
+				<tr>
+					<th class="text-center">직구</th>
+					<td id="fast_ori" class="text-center ballRecord"></td>
+					<td id="fast" class="text-center ballRecord">&nbsp;<br>&nbsp;</td></tr>
+				<tr>
+					<th class="text-center">커브</th>
+					<td id="curve_ori" class="text-center ballRecord"></td>
+					<td id="curve" class="text-center ballRecord">&nbsp;<br>&nbsp;</td>
+				</tr>
+				<tr>
+					<th class="text-center">슬라<br>이더</th>
+					<td id="slider_ori" class="text-center ballRecord"></td>
+					<td id="slider" class="text-center ballRecord">&nbsp;<br>&nbsp;</td>
+				</tr>
+				<tr>
+					<th class="text-center">기타</th>
+					<td id="etc_ori" class="text-center ballRecord"></td>
+					<td id="etc" class="text-center ballRecord">&nbsp;<br>&nbsp;</td>
+				</tr>
+			</table>
+			<table class="table table-condensed">
+				<tr><th class="text-center" width="50%">타자</th><th class="text-center">투수</th></tr>
+				<tr><td id="batter" class="text-center">&nbsp;</td><td id="pitcher" class="text-center">&nbsp;</td></tr>
+			</table>
+		</div>
+		<div id="hitCourseZoneChart" align="center" class="col-sm-5 col-md-5">
+		</div>
+	</div>
+</div>	

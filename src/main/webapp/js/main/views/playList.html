@@ -1,0 +1,168 @@
+<% 
+	var preInning = 0;
+	var preInningTurn= 0;
+	var preBatter = '';
+	var prePitcher = '';
+%>
+<table class="player-list">
+	<tr>
+		<td style="height:20px;">
+			<div style="padding:0px; overflow-y:scroll; height:100%; width:100%; border:0px solid #e3e3e3;">
+				<table>
+					<tr>
+						<td class="title" width="15%" style="font-size:9px; height:20px; border:1px solid #e3e3e3;" data-lang="pitch">투구</td>
+						<td class="title" width="15%" style="font-size:9px; height:20px; border:1px solid #e3e3e3;">B-S</td>
+						<td class="title" width="25%" style="font-size:9px; height:20px; border:1px solid #e3e3e3;" data-lang="pitchType">구종</td>
+						<td class="title" width="25%" style="font-size:9px; height:20px; border:1px solid #e3e3e3;" data-lang="pitchSpeed">구속</td>
+						<td class="title" width="20%" style="font-size:9px; height:20px; border:1px solid #e3e3e3;" data-lang="result">결과</td>
+					</tr>
+				</table>
+			</div>
+		</td>
+	</tr>
+	<tr>
+		<td id="videoClipList">
+			<div id="clipListWrap" style="padding:0px; overflow-y:scroll; height:100%; width:100%; border:1px solid #ededed;">
+				<div id="clipContents">
+				<%if (_.size(playList)>0) {%>
+					<%_.each(playList, function (playInfo) {%>
+						<% if ((preInning == 0 || preInning!=playInfo.inning) || (preInning == 0 || preInningTurn!=playInfo.batInningTurn) || (preBatter==''|| preBatter!=playInfo.batterName) || (prePitcher==''||prePitcher!=playInfo.pitcherName)) { %>
+						<table class="clip_list title-clip <% if (playInfo.pitchTime - playInfo.taggingGapTime < 1) {%>disable<%}%>" name="videoClips" rel="<%=playInfo.gameInfoId%><%=playInfo.inning%><%=playInfo.inningTb%><%=playInfo.batInningTurn%><%=playInfo.batPitchSeq%>">
+							<tr>
+								<td class="title title-single" colspan="5" style="height:15px; font-size:9px;">
+									<span class="game-info">&lt;
+                                        <%=playInfo.gameDay%>&nbsp;
+                                        <% if  (useLang == 'en') { %>
+                                            <%=playInfo.pitcherTeamShortName%>:<%=playInfo.batterTeamShortName%>&gt;
+	                                    <% } else { %>
+	                                        <%=playInfo.pitcherTeamName%>:<%=playInfo.batterTeamName%>&gt;
+	                                    <% }%> 
+                                    </span>&nbsp;
+                                    <%=playInfo.inning%><%=cookie.getLanguage(useLang, "shortInning")%>
+                                    <%if(playInfo.inningTb==0){%><%=cookie.getLanguage(useLang, "top")%><%}else{%><%=cookie.getLanguage(useLang, "bottom")%><%}%>
+                                    <%=playInfo.batInningTurn%><% if  (useLang == 'en') { %>PA<% } else { %>번째<% }%> 
+									&nbsp;
+									<span class="player-info">#<%=playInfo.pitcherBacknum%>&nbsp;
+                                        <% if  (useLang == 'en') { %>
+                                            <% if (playInfo.pitcherForeignerYn == 'N') {%><%=playInfo.pitcherLastName%>,<%=playInfo.pitcherShortName%>(<%=playInfo.pitchingHand%>)
+                                            <%}else{%><%=playInfo.pitcherLastName%>(<%=playInfo.pitchingHand%>)<%}%>
+	                                    <% } else { %>
+	                                        <%=playInfo.pitcherName%>(<%=playInfo.pitchingHand%>)
+	                                    <% }%>
+									   &nbsp;vs.&nbsp;#<%=playInfo.batterBacknum%>&nbsp;
+									    <% if  (useLang == 'en') { %>
+									       <% if (playInfo.batterForeignerYn=='N'){ %><%=playInfo.batterLastName%>,<%=playInfo.batterShortName%>(<%=playInfo.battingHand%>)
+									       <% } else { %><%=playInfo.batterLastName%>(<%=playInfo.battingHand%>) <%}%>
+                                        <% } else { %><%=playInfo.batterName%>(<%=playInfo.battingHand%>)<% }%>
+								    </span>
+								</td>
+							</tr>
+							<tr>
+								<td width="15%"><%=playInfo.batPitchSeq%>(<%=playInfo.pureBatPitchSeq%>)</td>
+								<td width="15%"><%=playInfo.beforeBallCount%>-<%=playInfo.beforeStrikeCount%></td>
+							<%if (playInfo.checkBase == null || playInfo.checkBase == 0) {%>
+								<td width="25%">
+                                   <% if  (useLang == 'en') { %>
+                                       <%=playInfo.ballTypeShortName%>
+                                   <% } else { %>
+                                       <%=playInfo.ballCodeName%>
+                                   <% }%>
+								</td>
+								<td width="25%"><%=playInfo.ballSpeed%>Km/h</td>
+								<td width="20%">
+								   <% if  (useLang == 'en') { %>
+                                       <%=playInfo.hitResultShortName%>
+                                   <% } else { %>
+                                       <%=playInfo.hitResultName%>
+                                   <% }%>
+								</td>
+							<%} else {%>
+								<td colspan='3' width='70%'>
+									<% if(playInfo.checkBase == 1) {%>
+                                        <%=cookie.getLanguage(useLang, 'pick1st') %>
+                                        <!-- 1루견제 --> 
+                                    <%} else if (playInfo.checkBase==2) {%>
+                                        <%=cookie.getLanguage(useLang, 'pick2nd') %> 
+                                        <!-- 2루견제 -->
+                                    <%} else if (playInfo.checkBase==3) {%>
+                                        <%=cookie.getLanguage(useLang, 'pick3rd') %> 
+                                        <!-- 3루견제 -->
+                                    <%} else if (playInfo.checkBase==23) {%>
+                                        <%=cookie.getLanguage(useLang, 'catcherPick1st') %> 
+                                        <!-- 포수 - 1루 견제 -->
+                                    <%} else if (playInfo.checkBase==24) {%>
+                                        <%=cookie.getLanguage(useLang, 'catcherPick2nd') %> 
+                                        <!-- 포수 - 2루 견제 -->
+                                    <%} else if (playInfo.checkBase==25) {%>
+                                        <%=cookie.getLanguage(useLang, 'catcherPick3rd') %> 
+                                        <!-- 포수 - 3루 견제 -->
+                                    <%}%>
+								</td>
+							<%}%>
+							</tr>
+						</table>
+						<% } else {%>
+						<table class="clip_list <% if (playInfo.pitchTime - playInfo.taggingGapTime < 1) {%>disable<%}%>" name="videoClips" rel="<%=playInfo.gameInfoId%><%=playInfo.inning%><%=playInfo.inningTb%><%=playInfo.batInningTurn%><%=playInfo.batPitchSeq%>">
+							<tr>
+								<td width="15%"><%=playInfo.batPitchSeq%>(<%=playInfo.pureBatPitchSeq%>)</td>
+								<td width="15%"><%=playInfo.beforeBallCount%>-<%=playInfo.beforeStrikeCount%></td>
+							<%if (playInfo.checkBase == null || playInfo.checkBase == 0) {%>
+								<td width="25%">
+								   <% if  (useLang == 'en') { %>
+                                       <%=playInfo.ballTypeShortName%>
+                                   <% } else { %>
+                                       <%=playInfo.ballCodeName%>
+                                   <% }%>
+								</td>
+								<td width="25%"><%=playInfo.ballSpeed%>Km/h</td>
+								<td width="20%">
+								   <% if  (useLang == 'en') { %>
+                                       <%=playInfo.hitResultShortName%>
+                                   <% } else { %>
+                                       <%=playInfo.hitResultName%>
+                                   <% }%>
+								</td>
+							<%} else {%>
+								<td colspan='3' width="70%">
+									<% if(playInfo.checkBase == 1) {%>
+										<%=cookie.getLanguage(useLang, 'pick1st') %>
+										<!-- 1루견제 --> 
+									<%} else if (playInfo.checkBase==2) {%>
+										<%=cookie.getLanguage(useLang, 'pick2nd') %> 
+										<!-- 2루견제 -->
+									<%} else if (playInfo.checkBase==3) {%>
+										<%=cookie.getLanguage(useLang, 'pick3rd') %> 
+										<!-- 3루견제 -->
+									<%} else if (playInfo.checkBase==23) {%>
+										<%=cookie.getLanguage(useLang, 'catcherPick1st') %> 
+										<!-- 포수 - 1루 견제 -->
+									<%} else if (playInfo.checkBase==24) {%>
+										<%=cookie.getLanguage(useLang, 'catcherPick2nd') %> 
+										<!-- 포수 - 2루 견제 -->
+									<%} else if (playInfo.checkBase==25) {%>
+										<%=cookie.getLanguage(useLang, 'catcherPick3rd') %> 
+										<!-- 포수 - 3루 견제 -->
+									<%}%>
+								</td>
+							<%}%>
+							</tr>
+						</table>
+						<%}
+						preBatter = playInfo.batterName;
+						prePitcher = playInfo.pitcherName;
+						preInning = playInfo.inning;
+						preInningTurn = playInfo.batInningTurn;
+						%>
+					<%}); %>
+				<%} else {%>
+						<table class="clip_list">
+							<tr>
+								<td class="title title-single" style='text-align:center; font-size:15px;'>조회 정보가 없습니다. <br> 다시 조건을 설정 해 주세요.</td>
+							</tr>
+						</table>
+				<%} %>
+				</div>
+			</div>
+		</td>
+	</tr>
+</table>

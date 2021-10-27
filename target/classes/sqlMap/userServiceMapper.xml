@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hiball.security.user">
+	<resultMap id="userInfoMap" type="user">
+		<result property="username" column="ID" />
+		<result property="password" column="PWD"/>
+		<result property="userNo" column="MNO"/>
+		<result property="name" column='MNAME'/>
+		<result property="mail" column="EMAIL"/>
+		<result property="belongedDept" column="dept_desc"/>
+		<result property="belongedDeptId" column="dept_id"/>
+		<!-- <collection property="authorities" column="{userNo=MNO, userId=ID" select="selectUserRoleByUserno"/> -->
+	</resultMap>
+	<resultMap id="userRoleMap" type="role">
+		<result property="roleId" column="role_id"/>
+		<result property="name" column="role_name"/>
+		<result property="belongedDeptId" column="dept_id"/>
+		<result property="userId" column="user_id"/>
+		<result property="rolePriority" column="role_priority"/>
+		<result property="roleDesc" column="role_desc"/>
+	</resultMap>
+
+	<select id="selectUserInfoByUsername" resultMap="userInfoMap" parameterType="user">
+		SELECT MNO,MNAME,EMAIL,ID,PWD
+		  FROM MEM_AD
+		 where ID=#{username}
+
+	</select>
+	
+	<select id="selectUserRoleByUserno" resultMap="userRoleMap">
+		SELECT r.role_id, r.dept_id, user_id, role_name, role_priority, role_desc 
+		  FROM role r 
+		INNER JOIN role_for_user ru
+				ON (r.role_id = ru.role_id)
+		 WHERE user_no = #{userNo}
+		   AND user_id = #{userId}
+	</select>
+</mapper>

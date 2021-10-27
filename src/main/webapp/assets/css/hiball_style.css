@@ -1,0 +1,285 @@
+﻿﻿body, input, textarea, button, select, table, div, td, th {
+	font: 11px/1.5 ng-eb, dotum, '돋움', Tahoma, Sans-serif;
+	color: #555;
+	-webkit-text-size-adjust: none;
+}
+
+.bar {
+	width: 100%;
+	height: 3px;
+	background-color: #ff9405;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	background-color: #fff;
+}
+
+div.inner-contents {
+	padding: 0px;
+}
+
+a {
+	color: #444
+}
+
+a:link, a:visited, a:hover, a:focus, a:active {
+	text-decoration: none;
+}
+
+table {
+	width: 100%;
+}
+
+table th {
+	text-align: center;
+	background: #f6f6f6;
+}
+
+header {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 35px;
+	background: #fafafa;
+	border-bottom: 1px solid #ccc;
+	z-index: 1;
+}
+
+footer {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	height: 20px;
+	width: 100%;
+}
+
+header>.logo-wrap {
+	height: 100%;
+	padding: 0px;
+}
+
+header>.logo-wrap>img {
+	margin: 5px;
+}
+
+header>.loging-info {
+	height: 100%;
+	padding: 0px;
+}
+
+header>.loging-info>img {
+	pointer: cursor;
+	float: right;
+	color: Orange;
+	margin-top: 3px;
+	margin-left: 3px;
+	margin-bottom: 3px;
+	margin-right: 6px;
+}
+
+header>.lang-info {
+	padding-left: 2px;
+	padding-right: 5px;
+}
+
+header>.lang-info>select {
+	float: right;
+	font-size: 12px;
+	font-weight: 400;
+
+	margin: 3px;
+	height: 25px;
+
+	appearance: none;
+
+	line-height: 1.0;
+	color: #444;
+	background-color: #fff;
+	padding: 0 5px;
+
+	border: 1px solid #aaa;
+	border-radius: 0.5em;
+	box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
+}
+
+span.alert-text {
+	font-size: 14px;
+}
+
+span.empasis {
+	font-size: 14px;
+	color: red;
+}
+
+#layout_main:fullscreen {
+	width: 100%;
+	height: 100%;
+	background-color: green;
+}
+
+#layout_main:-webkit-full-screen {
+	width: 100%;
+	height: 100%;
+	background-color: green;
+}
+
+.layout_container {
+	padding: 0px;
+	margin: 0px;
+	min-height: 360px;
+	height: 100%;
+}
+
+.layout_row {
+	margin: 0px;
+}
+
+.contents_wrapper {
+	position: relative;
+	padding: 2px;
+	top: 33px;
+	width: 100%;
+	min-height: 280px;
+	height: 100%;
+}
+
+.contents_wrapper .btn {
+	padding: 0px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	margin-left: 0px;
+	margin-right: 0px;
+	width: 100%;
+	height: 35px;
+	font-size: 20px;
+}
+
+.title {
+	padding: 3px;
+	height: 25px;
+	font-weight: bolder;
+	font-size: 12px;
+	text-align: center;
+	background-color: #f5f5f5;
+}
+
+.title-single {
+	text-align: left;
+	background-color: #d9d9d9;
+}
+
+.title-middle {
+	font-size: 10px;
+	background-color: #e5e5e5;
+}
+
+.title-main {
+	border-top: 1px solid #d8d8d8 !important;
+	border-left: 1px solid #d8d8d8 !important;
+	border-bottom: 1px solid #d8d8d8 !important;
+	border-right: 1px solid #d8d8d8 !important;
+}
+
+/* footer */
+footer .box_footlist {
+	position: relative;
+	height: 100%;
+	overflow: hidden;
+	padding: 0px;
+	background: #fafafa;
+	text-align: center;
+	border-top: 1px solid #CCC;
+}
+
+footer .box_footlist ul {
+	padding: 0px;
+}
+
+footer .box_footlist li {
+	font-family: ng-eb;
+	display: inline-block;
+	padding: 2px 5px;
+	background: url(../images/design/bg_tabline.gif) 0 50% no-repeat;
+}
+
+footer .box_footlist li:first-child {
+	background: none;
+}
+
+footer .box_footlist li a {
+	font-size: 11px;
+	font-weight: bold;
+	color: #555;
+}
+
+footer .box_foot {
+	border-top: 1px solid #ebebeb;
+}
+
+footer .box_foot>div {
+	overflow: hidden;
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+footer .box_footlist .foot_right {
+	color: #ccc;
+	font-size: 10px;
+	padding-top: 2px;
+}
+
+.criteria-popup {
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	margin: 0 auto;
+}
+
+.criteria-popup .title {
+	font-family: ng-eb;
+	width: 55px;
+	background-color: #ebebeb;
+}
+
+.criteria-popup td {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 3px;
+	padding-right: 3px;
+	height: 25px;
+	font-size: 10px;
+	color: #000;
+	border: 1px solid #dedede;
+}
+
+.criteria-popup select {
+	text-align: center;
+	width: 100%;
+	border: 1px solid #ccc;
+}
+
+.criteria-popup td.criteria-preset {
+	text-align: left;
+}
+
+.criteria-popup td.criteria-preset .btn {
+	padding: 0px 3px 0px 3px;
+	font-size: 12px;
+	height: 25px;
+}
+
+.criteria-popup td.criteria-preset button.active {
+	background-color: #f8b204 !important;
+}
+
+@media ( max-width : 640px) {
+	.mb-4 {
+		font-size: 21px;
+		margin-bottom: 2.5rem !important;
+	}
+}

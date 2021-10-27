@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hiball.web.code">
+	<resultMap id="codeResultMap" type="codeDomain">
+		<id property="codeId" 				column="code_id"/>
+		<result property="name" 			column="name"/>
+		<result property="teamName" 		column="team_name"/>
+		<result property="membersId"		column="members_id"/>
+		<result property="catcherMembersId" column="catcher_members_id"/>
+		<result property="catcherName"		column="catcher_name"/>
+	</resultMap>
+	
+	<select id="selectCodeInfo" parameterType="codeParam" resultMap="codeResultMap">
+		SELECT code_id, name
+		  FROM codes
+		 WHERE 1=1
+		<if test="pCodeId!=null and pCodeId!=0">
+		   AND p_code_id = #{pCodeId}
+		</if>
+		<if test="name!=null and name!= ''">
+		   AND  name like '%${name}%'
+		</if>
+		ORDER BY code_id
+	</select>
+	<select id="selectTeamCodeInfo" parameterType="codeParam" resultMap="codeResultMap">
+		SELECT team_id as code_id, name
+		  FROM team_info
+		 WHERE 1=1
+		<if test="gameType == 4201">
+		   AND team_type like 'KBO%'
+		</if>
+		<if test="gameType == 4202">
+		   AND team_type like '%FUTURES%'
+		</if>
+		ORDER BY start_seq
+	</select>
+	<select id="selectPlayerCodeInfo" parameterType="codeParam" resultMap="codeResultMap">
+		SELECT a.members_id code_id, a.name, b.name team_name
+		  FROM members a 
+		INNER JOIN members b
+			ON (a.team = b.members_id)
+		WHERE a.members_type_code = 112
+		<if test="codeId!=null and codeId != 0">
+		  AND a.members_id = #{codeId}
+		</if>
+		<if test="name!=null and name!=''">
+		  AND a.name like '%${name}%'
+		</if>
+	</select>
+	<select id="selectRefereeCodeInfo" parameterType="codeParam" resultMap="codeResultMap">
+		SELECT members_id code_id, name
+		  FROM members
+		 WHERE members_type_code = 132
+		<if test="codeId!=null and codeId != 0">
+		   AND members_id = #{codeId}
+		</if>
+		<if test="name !=null and name != ''">
+		   AND name like concat('%',#{name},'%')
+		</if>
+	</select>
+	<select id="selectBatterRosterInfo" parameterType="codeParam" resultMap="codeResultMap">
+		SELECT player_members_id as code_id, player_name as name, team_name
+		  FROM hiball_game_roster
+		 WHERE roster_type_code IN (5101, 5103)
+		<if test="gameInfoId!=null and gameInfoId!=0">
+		   AND game_info_id = #{gameInfoId}
+		</if>
+		<if test="teamId!=null and teamId!=0">
+		   AND team_members_id = #{teamId}
+		</if>
+		GROUP BY team_name, roster_type_code, player_members_id, player_name
+	</select>
+	
+	<select id="selectPitcherRosterInfo" parameterType="codeParam" resultMap="codeResultMap">
+		SELECT player_members_id as code_id, player_name as name, team_name
+		  FROM hiball_game_roster
+		 WHERE roster_type_code IN (5102, 5104)
+		<if test="gameInfoId!=null and gameInfoId!=0">
+		   AND game_info_id = #{gameInfoId}
+		</if>
+		<if test="teamId!=null and teamId!=0">
+		   AND team_members_id = #{teamId}
+		</if>
+		GROUP BY team_name, roster_type_code, player_members_id, player_name
+	</select>
+	
+	<select id="selectBatterInTeam" parameterType="codeParam" resultMap="codeResultMap">
+		SELECT 	player_id members_id, player_name name, team_id, team_name
+		  FROM	hiball_game_roster
+		 WHERE	season = 2018
+		   AND	roster_type_code IN (5101, 5103)
+		   AND 	team_id = #{teamId}
+		GROUP BY player_id, player_name, team_id, team_name
+	</select>
+	
+	<select id="selectPitcherInTeam" parameterType="codeParam" resultMap="codeResultMap">
+		SELECT player_id members_id, player_name name, team_id, team_name
+		  FROM	hiball_game_roster
+		 WHERE	season = 2018
+		   AND	roster_type_code IN (5102, 5104)
+		   AND 	team_id = #{teamId}
+		GROUP BY player_id, player_name, team_id, team_name
+	</select>
+	
+	<select id="selectCatcherList" parameterType="codeParam" resultMap="codeResultMap">
+		SELECT distinct catcher_members_id, catcher_name
+		  FROM hiball_game_record_summary
+		<if test="pitcherMembersId != 0 and pitcherMembersId != null">
+		WHERE pitcher_members_id = #{pitcherMembersId}
+		</if>
+	</select>
+	
+</mapper>

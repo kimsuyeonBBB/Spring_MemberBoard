@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="cacheEnabled" value="true" />
+		<setting name="lazyLoadingEnabled" value="false" />
+		<setting name="multipleResultSetsEnabled" value="true" />
+		<setting name="useColumnLabel" value="true" />
+		<setting name="useGeneratedKeys" value="false" />
+		<setting name="defaultExecutorType" value="SIMPLE" />
+		<setting name="defaultStatementTimeout" value="25000" />
+	</settings>
+	
+	<typeAliases>
+		<typeAlias type="java.util.List" 											alias="list" />
+		<typeAlias type="java.util.HashMap" 										alias="hashmap" />
+		<typeAlias type="com.hiball.web.common.param.SystemConstantsParam" 			alias="systemConstantsDomain"/>
+		<typeAlias type="com.hiball.api.domain.GameInfo" 							alias="gameInfo" />
+		<typeAlias type="com.hiball.api.domain.GameRecord"							alias="gameRecord" />
+		<typeAlias type="com.hiball.api.domain.GameVideoRecord" 					alias="gameVideoRecord" />
+		<typeAlias type="com.hiball.api.domain.GamePatternRecord" 					alias="gamePatternRecord"/>
+		<typeAlias type="com.hiball.api.domain.CodeDomain" 							alias="codeDomain" />
+		<typeAlias type="com.hiball.api.domain.PlayerInfo" 							alias="playerInfo" />
+		<typeAlias type="com.hiball.api.domain.VideoRecord" 						alias="videoRecord" />
+		<typeAlias type="com.hiball.api.param.GameScheduleParam" 					alias="gameScheduleParam" />
+		<typeAlias type="com.hiball.api.param.CodeParam" 							alias="codeParam" />
+	</typeAliases>
+	
+	<typeHandlers>
+		<!-- java.sql.Timestamp 를 java.util.Date 형으로 반환 -->
+		<typeHandler javaType="java.sql.Timestamp" 	handler="org.apache.ibatis.type.DateTypeHandler" />
+		<typeHandler javaType="java.sql.Time" 		handler="org.apache.ibatis.type.DateTypeHandler" />
+		<typeHandler javaType="java.sql.Date" 		handler="org.apache.ibatis.type.DateTypeHandler" />
+	</typeHandlers>
+
+</configuration>

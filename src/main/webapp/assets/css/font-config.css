@@ -1,0 +1,24 @@
+@charset "utf-8";
+@font-face {
+    font-family: 'ns';
+    src:url(../font/NanumSqureR.eot);
+    src:url(../font/NanumSquareR.woff) format('woff');
+}
+@font-face {
+    font-family: 'ng';
+    src:url(../font/NanumGothic.eot);
+    src:url(../font/NanumGothic.ttf);
+    src:url(../font/NanumGothic.woff) format('woff');
+}
+@font-face {
+    font-family: 'ng-b';
+    src:url(../font/NanumGothicBold.eot);
+    src:url(../font/NanumGothic-Bold.ttf);
+    src:url(../font/NanumGothicBold.woff) format('woff');
+}
+@font-face {
+    font-family: 'ng-eb';
+    src:url(../font/NanumGothic-ExtraBold.eot);
+    src:url(../font/NanumGothic-ExtraBold.ttf);
+    src:url(../font/NanumGothic-ExtraBold.woff) format('woff');
+}

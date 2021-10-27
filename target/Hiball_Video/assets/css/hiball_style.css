@@ -1,0 +1,120 @@
+﻿﻿body, input, textarea, button, select, table div{ font:12px/1.5 ng, dotum, '돋움', Tahoma, Sans-serif; color:#555; -webkit-text-size-adjust:none; }
+
+.bar {
+	width:100%;
+    height:3px;
+    background-color:#ff9405;
+}
+
+body { 
+    width:100%; 
+    height:100%; 
+} 
+
+div.inner-contents {
+	padding:0px;
+}
+
+a{color:#444}
+a:link, a:visited, a:hover, a:focus, a:active {
+	text-decoration: none;
+}
+table {
+	width:100%;
+}
+table th {
+	text-align: center;
+	background: #f6f6f6;
+}
+header  {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height:40px;
+	background: #fafafa;
+	border-bottom:1px solid #ccc; 
+	z-index:1;
+}
+footer {
+	position:fixed;
+	left:0;
+	bottom:0;
+	height:40px;
+	width:100%;
+}
+
+header > .logo-wrap {
+	height:100%;
+	padding:0px;
+}
+header > .logo-wrap > img {
+	margin:5px;
+}
+.layout_container {
+	padding:0px;
+	margin:0px;
+	min-height:360px;
+	height:100%;
+}
+.layout_row {
+	margin:0px;
+}
+.contents_wrapper {
+	position:relative;
+	top:40px;
+	width:100%;
+	min-height:280px;
+	height:100%;
+}
+.contents_wrapper .btn {
+	margin:3px;
+	width:95%;
+	height:90px;
+}
+
+.title {
+	padding:3px;
+	font-weight:bolder;
+	font-size:13px;
+	text-align:center;
+	background-color:#ccc;
+}
+.title-criteria {
+	width:60px;
+}
+.title-single {
+	text-align:left;
+	background-color:#d9d9d9;
+}
+.title-middle {
+	font-size:10px;
+	background-color:#e5e5e5;
+}
+.title-main {
+	border-top:1px solid #000 !important;
+	border-left:1px solid #000 !important;
+	border-bottom:3px double #000 !important;
+	border-right:1px solid #000 !important;
+}
+
+/* footer */
+footer .box_footlist{
+	position:relative; height:100%; overflow: hidden; padding: 8px 0; background: #fafafa; text-align: center;
+	border-top:1px solid #CCC;
+}
+footer .box_footlist ul {padding: 0px;}
+footer .box_footlist li{
+	font-family:ng-eb;
+	display: inline-block; padding: 2px 5px; background: url(../images/design/bg_tabline.gif) 0 50% no-repeat;
+}
+footer .box_footlist li:first-child{background: none;}
+footer .box_footlist li a{font-size: 11px; font-weight: bold; color:#555;}
+footer .box_foot{border-top: 1px solid #ebebeb;}
+footer .box_foot > div {overflow: hidden; width: 100%; margin: 0 auto; text-align: center;}
+footer .box_footlist .foot_right {color: #ccc; font-size: 10px; padding-top: 5px;}
+
+
+.clip_list:hover {
+	background-color:#ccc;
+}

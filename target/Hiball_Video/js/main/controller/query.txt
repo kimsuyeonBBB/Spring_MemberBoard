@@ -1,0 +1,106 @@
+SELECT CONCAT(CASE WHEN video_info.season = 2017 THEN 'http://movie2017' ELSE 'http://movie' END,'.kbostats.net/video.php?videoType=', CASE WHEN video_type = 'broadCast' THEN video_type ELSE concat(video_type, game_video_type_seq) END, '&amp;season=', video_info.season, '&amp;gameDay=', replace(video_info.game_day, '-', ''), '&amp;gameName=', SUBSTRING(server_filename, INSTR(server_filename, '_') + 1, 5), '&amp;gameType=', CASE WHEN hgr.game_type = 4206 THEN 'FUTURES' ELSE 'KBO' END ) video_path,
+				CONCAT(CASE WHEN video_info.season = 2017 THEN 'http://movie2017' ELSE 'http://movie' END,'.kbostats.net/', video_type, '/', hgr.season, '/', server_filename) video_path2,
+				<!-- CONCAT('http://localhost:9224/Documents/video/', video_info.season, '/', video_info.game_day, '/', video_info.download_filename) local_path, -->
+				CONCAT('http://localhost:9224/', video_info.season, '/', video_info.server_filename) local_path,
+				download_filename, video_info.game_info_id, hgr.game_record_id,
+				video_info.initial_pitch_time, video_info.nvr_initial_pitch_time, video_info.nvr_initial_pitch_time - video_info.initial_pitch_time tagging_gap_time, 
+				record_time.pitch_time, video_info.video_type, 
+				hgr.season, hgr.game_day, hgr.inning, hgr.inning_tb, hgr.batter_id batter_members_id, 
+				hgr.batter_name, hgr.pitcher_id pitcher_members_id, hgr.pitcher_name, 
+				hgr.catcher_name, hgr.catcher_id catcher_members_id,
+				CASE WHEN ds_ball_speed IS NULL OR ds_ball_speed = '' THEN ball_speed ELSE ds_ball_speed END ball_speed, 
+				CASE WHEN ds_ball_code IS NULL OR ds_ball_code = '' THEN ball_code ELSE ds_ball_code END ball_code, 
+				CASE WHEN ds_ball_code_name IS NULL OR ds_ball_code_name = '' THEN ball_code_name ELSE ds_ball_code_name END ball_code_name, 
+				hgr.batter_team_id, hgr.batter_team_name, hgr.pitcher_team_id, hgr.pitcher_team_name, 
+				hgr.game_day, hgr.before_runner_state, hgr.before_out_count, hgr.before_strike_count, hgr.before_ball_count, hgr.before_score_gap,
+				hgr.ball_code, hgr.hit_result_code, hgr.hit_result_name, hgr.check_base,
+				hgr.pitching_form,
+				single b1b, doubles b2b, triples b3b, home_runs hr, ground_home_runs ghr,
+				single+doubles+triples+home_runs+ground_home_runs hit, base_on_balls bb, intentional_walks ibb, hit_by_pitch hbp, ground_out go, fly_out fo, ground_into_double_plays gdp, strike_out so,
+				CASE WHEN record_time.season IS NULL THEN false
+			 	ELSE true END tagging_yn,
+			 	hgr.batting_hand, hgr.pitching_hand, hgr.hit_type_code, hgr.batted_ball_rank,
+			 	memo1_code, memo2_code, memo3_code, memo4_code, memo5_code, memo6_code,
+			 	memo1_name, memo2_name, memo3_name, memo4_name, memo5_name, memo6_name
+		FROM hiball_video_info video_info LEFT OUTER JOIN hiball_record_time_info record_time
+		ON (video_info.game_info_id = record_time.game_info_id AND record_time.bat_pitch_seq IS NOT NULL) INNER JOIN 
+		(
+			SELECT *
+			FROM hiball_game_record hgr
+			WHERE 1 = 1
+			<if test="gameInfoIds != null">
+		   AND game_info_id in
+			<foreach collection="gameInfoIds" item = "item" separator="," open="(" close=")">
+			 	#{item}
+			</foreach>
+			</if>
+			<if test="gameInfoId != null and gameInfoId != ''.toString()">
+			  AND game_info_id = #{gameInfoId}
+			</if>
+			<if test="gameRecordIds != null">
+			  AND game_record_id IN 
+				<foreach collection="gameRecordIds" item="item" separator="," open="(" close=")">
+					#{item}
+				</foreach>
+			</if>
+			<if test="gameRecordId != null and gameRecordId != ''.toString()">
+			  AND game_record_id = #{gameRecordId}
+			</if>
+		) hgr
+		ON (	hgr.game_info_id = record_time.game_info_id
+			AND hgr.inning = record_time.inning
+			AND hgr.inning_tb = record_time.inning_tb
+			AND hgr.bat_inning_turn = record_time.bat_inning_turn
+			AND hgr.bat_pitch_seq = record_time.bat_pitch_seq
+			AND record_time.bat_pitch_seq IS NOT NULL
+		) LEFT OUTER JOIN 
+		(
+			SELECT 	game_record_id, game_info_id, inning, inning_tb, bat_inning_turn, bat_pitch_seq, 
+					SUBSTRING_INDEX(GROUP_CONCAT(operation_code separator '/'), '/', 1) memo1_code, 
+					SUBSTRING_INDEX(SUBSTRING_INDEX(GROUP_CONCAT(operation_code separator '/'), '/', 2), '/', -1) memo2_code, 
+					SUBSTRING_INDEX(SUBSTRING_INDEX(GROUP_CONCAT(operation_code separator '/'), '/', 3), '/', -1) memo3_code, 
+					SUBSTRING_INDEX(SUBSTRING_INDEX(GROUP_CONCAT(operation_code separator '/'), '/', 4), '/', -1) memo4_code, 
+					SUBSTRING_INDEX(SUBSTRING_INDEX(GROUP_CONCAT(operation_code separator '/'), '/', 5), '/', -1) memo5_code, 
+					SUBSTRING_INDEX(GROUP_CONCAT(operation_code separator '/'), '/', -1) memo6_code, 
+					SUBSTRING_INDEX(GROUP_CONCAT(operation_name separator '/'), '/', 1) memo1_name, 
+					SUBSTRING_INDEX(SUBSTRING_INDEX(GROUP_CONCAT(operation_name separator '/'), '/', 2), '/', -1) memo2_name, 
+					SUBSTRING_INDEX(SUBSTRING_INDEX(GROUP_CONCAT(operation_name separator '/'), '/', 3), '/', -1) memo3_name, 
+					SUBSTRING_INDEX(SUBSTRING_INDEX(GROUP_CONCAT(operation_name separator '/'), '/', 4), '/', -1) memo4_name, 
+					SUBSTRING_INDEX(SUBSTRING_INDEX(GROUP_CONCAT(operation_name separator '/'), '/', 5), '/', -1) memo5_name, 
+					SUBSTRING_INDEX(GROUP_CONCAT(operation_name separator '/'), '/', -1) memo6_name
+			  FROM hiball_game_memo_etc
+			GROUP BY game_record_id, game_info_id, inning, inning_tb, bat_inning_turn, bat_pitch_seq
+		 ) memo
+		 ON (hgr.game_info_id = memo.game_info_id
+			 AND hgr.inning = memo.inning
+			 AND hgr.inning_tb = memo.inning_tb
+			 AND hgr.bat_inning_turn = memo.bat_inning_turn
+			 AND hgr.bat_pitch_seq = memo.bat_pitch_seq) 
+		<!-- WHERE video_info.game_info_id IN (1022018010006, 1022018010001) -->
+		WHERE 1 = 1
+		<if test="gameInfoIds != null">
+		   AND video_info.game_info_id in
+			<foreach collection="gameInfoIds" item = "item" separator="," open="(" close=")">
+			 	#{item}
+			</foreach>
+		</if>
+		<if test="gameInfoId != null and gameInfoId != ''.toString()">
+		  AND video_info.game_info_id = #{gameInfoId}
+		</if>
+		<if test="gameRecordIds != null">
+		  AND hgr.game_record_id IN 
+			<foreach collection="gameRecordIds" item="item" separator="," open="(" close=")">
+				#{item}
+			</foreach>
+		</if>
+		<if test="gameRecordId != null and gameRecordId != ''.toString()">
+		  AND hgr.game_record_id = #{gameRecordId}
+		</if>
+		<if test="batterIds != null and batterIds != ''.toString()">
+			AND hgr.batter_id IN (${batterIds})
+		</if>
+		<if test="pitcherIds != null and pitcherIds != ''.toString()">
+			AND hgr.pitcher_id IN (${pitcherIds})
+		</if>
+		AND download_filename != '' AND server_filename != ''
+		ORDER BY download_filename, hgr.game_day, hgr.game_info_id, CAST(hgr.inning AS UNSIGNED), hgr.inning_tb, hgr.bat_inning_turn, record_time.pitch_time

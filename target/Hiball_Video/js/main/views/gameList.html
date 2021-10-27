@@ -1,0 +1,42 @@
+<table class="game-list">
+	<tr>
+		<td class="title title-main" width='5%'>선택</td>
+		<td class="title title-main" width='5%'>NO.</td>
+		<td class="title title-main" width='30%'>경기일자</td>
+		<td class="title title-main" width='20%'>원정</td>
+		<td class="title title-main" width='10%'>득점</td>
+		<td class="title title-main" width='20%'>홈</td>
+	</tr>
+	<tr>
+		<td colspan="8" style="height:250px; padding:0px;">
+			<div style="font-size:11px; overflow-y:scroll; height:100%; width:100%;">
+		<%if (_.size(list)>0) {%>
+			<%_.each(range, function (idx) { var gameInfo = list[idx];%>
+			<table class="inner-table">
+				<tr>
+					<td width="5%"><input type='radio' name="gameList" value="<%=gameInfo.gameInfoId%>"/></td>
+					<td width="5%"><%=idx+1%></td>
+					<td width="30%"><%=gameInfo.gameDay%></td>
+					<td width="20%"><%=gameInfo.awayTeamName%><br><<%=gameInfo.awayBeginPitcher%>></td>
+					<td width="10%"><%=gameInfo.awayTeamScore%> : <%=gameInfo.homeTeamScore%></td>
+					<td width="20%"><%=gameInfo.homeTeamName%><br><<%=gameInfo.homeBeginPitcher%>></td>
+				</tr>
+			</table>
+			<%}) %>
+		<%} else if (list==null) {%>
+			<table>
+				<tr>
+					<td style="background-color:#d9d9d9d9;text-align:center;">경기를 조회 해 주십시오.</td>
+				</tr>
+			</table>
+		<%} else {%>
+			<table>
+				<tr>
+					<td style="background-color:#d9d9d9d9;text-align:center;">경기가 없습니다.</td>
+				</tr>
+			</table>
+		<%}%>
+			</div>
+		</td>
+	</tr>
+</table>
