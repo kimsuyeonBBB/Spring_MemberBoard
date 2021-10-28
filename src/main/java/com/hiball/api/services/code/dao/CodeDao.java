@@ -17,6 +17,7 @@ public interface CodeDao {
     public int updateNewMemberInfo(CodeParam param);
     public int deleteMemberInfo(CodeParam param);
     public List<CodeDomain> selectBoardInfo(CodeParam param);
+    public List<CodeDomain> selectBoardCountInfo(CodeParam param);
     public int insertBoardInfo(CodeParam param);
     public List<CodeDomain> updateBoardInfo(CodeParam param);
     public int updateNewBoardInfo(CodeParam param);

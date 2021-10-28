@@ -20,6 +20,7 @@
 		<result column="TITLE" property="title"/>
 		<result column="STORY" property="story"/>
 		<result column="CRE_DATE" property="createdDate"/>
+		<result column="BoardCount" property="boardcount"/>
 	</resultMap>
 	
 	<resultMap id="codeResultMap" type="codeDomain">
@@ -140,6 +141,13 @@
 		SELECT MNO,TITLE,CRE_DATE,STORY,MNAME
 		  FROM BOARDS
 		 WHERE MNAME=#{name} 
+		 LIMIT #{beginIdx}, #{listSize} 
+	</select>
+	
+	<select id="selectBoardCountInfo" parameterType="codeParam" resultMap="boardResultMap">
+		SELECT COUNT(*) BoardCount
+		  FROM BOARDS
+		 WHERE MNAME=#{name}
 	</select>
 	
 	<insert id="addBoardInfo" parameterType="codeParam">

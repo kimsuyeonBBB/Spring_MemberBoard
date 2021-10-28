@@ -6,6 +6,7 @@ public class BoardInfo {
 	private String title;
 	private String story;
 	private String createdDate;
+	private String boardcount;
 	
 	public int getNo() {
 		return no;
@@ -36,5 +37,11 @@ public class BoardInfo {
 	}
 	public void setCreatedDate(String createdDate) {
 		this.createdDate = createdDate;
+	}
+	public String getBoardcount() {
+		return boardcount;
+	}
+	public void setBoardcount(String boardcount) {
+		this.boardcount = boardcount;
 	}
 }

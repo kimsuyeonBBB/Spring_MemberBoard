@@ -6,7 +6,24 @@
 <style>
 	th,td { font-size: 13px; }
 	input { width:70px; height:35px; font-size:13px; margin-left:100px;}
-	table { width:800px; height:500px; }
+	table { width:800px; }
+	
+	.pageInfo{
+      list-style : none;
+      display: inline-block;
+      margin: 50px 0 0 100px;      
+    }
+    .pageInfo li{
+      float: left;
+      font-size:15px;
+      margin-left: 18px;
+      padding: 7px;
+      font-weight: 500;
+    }
+ a:link {color:black; text-decoration: none;}
+ a:visited {color:black; text-decoration: none;}
+ a:hover {color:black; text-decoration: underline;}
+	
 </style>
 </head>
 <body>
@@ -16,7 +33,7 @@
 	</div>
 	<table>
 	<thead>
-		<tr>
+		<tr style="height:40px;">
 			<th>번호</th>
 			<th>제목</th>
 			<th>등록일</th>
@@ -25,7 +42,7 @@
 	</thead>
 	<tbody>
 		<%_.each(data, function(item, idx){  %>
-		<tr style='text-align:center'>
+		<tr style='text-align:center; height:50px;'>
 			<td><%=item['no']%></td>
 			<td><a href="boardUpdate?no=<%=item['no']%>"><%=item['title']%></a></td>
 			<td><%=item['createdDate']%></td>
@@ -34,6 +51,27 @@
 		<% }); %>
 	</tbody>
 	</table>
+
+	<div class="pageInfo_wrap">
+		<div class="pageInfo_area">
+			<ul id="pageInfo" class="pageInfo">
+				<!-- 이전페이지 버튼 -->
+				<% if(pagenum >1){ %>
+					<li class="pageInfo_btn previous"><a href="boardList?pagenum=<%=pagenum-1%>">Prev</a></li>
+				<% } %>
+				
+    			<!-- 각 번호 페이지 버튼 -->
+    			<% for(var i = 1 ; i < totalCount+1 ; i++){ %>
+    				<li class="pageInfo_btn"><a href="boardList?pagenum=<%=i%>"><%=i%></a></li>
+    			<% } %>
+    			
+    			<!-- 다음페이지 버튼 -->
+    			<% if(pagenum < totalCount){ %>
+    			<li class="pageInfo_btn next"><a href="boardList?pagenum=<%=pagenum+1%>">Next</a></li>
+    			<% } %>
+			</ul>
+		</div>
+	</div>
 
 </body>
 </html>

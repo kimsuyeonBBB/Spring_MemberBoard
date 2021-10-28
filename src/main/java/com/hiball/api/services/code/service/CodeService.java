@@ -16,6 +16,7 @@ public interface CodeService {
     public int retrieveMemberNewUpdateInfo(CodeParam param);
     public int retrieveMemberDeleteInfo(CodeParam param);
     public List<CodeDomain> retrieveBoardListInfo(CodeParam param);
+    public List<CodeDomain> retrieveBoardCountInfo(CodeParam param);
     public int retrieveBoardAddInfo(CodeParam param);
     public List<CodeDomain> retrieveBoardUpdateInfo(CodeParam param);
     public int retrieveBoardNewUpdateInfo(CodeParam param);

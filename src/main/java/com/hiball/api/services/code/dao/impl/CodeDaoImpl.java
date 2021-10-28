@@ -67,6 +67,11 @@ public class CodeDaoImpl extends AbstractCommonAPIDao implements CodeDao {
 	}
 
 	@Override
+	public List<CodeDomain> selectBoardCountInfo(CodeParam param) {
+		return sqlSession.selectList(prefix + "selectBoardCountInfo",param);
+	}
+	
+	@Override
 	public int insertBoardInfo(CodeParam param) {
 		return sqlSession.insert(prefix + "addBoardInfo", param);
 	}
@@ -95,6 +100,8 @@ public class CodeDaoImpl extends AbstractCommonAPIDao implements CodeDao {
 	public List<CodeDomain> selectFindPwInfo(CodeParam param) {
 		return sqlSession.selectList(prefix + "findPwInfo",param);
 	}
+
+	
 
 
 }

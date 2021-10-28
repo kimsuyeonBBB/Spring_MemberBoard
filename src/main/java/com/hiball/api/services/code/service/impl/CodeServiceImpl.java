@@ -89,6 +89,11 @@ public class CodeServiceImpl extends AbstractCommonAPIService<CodeParam> impleme
     }
     
     @Override
+	public List<CodeDomain> retrieveBoardCountInfo(CodeParam param) {
+		return codeDao.selectBoardCountInfo(param);
+	}
+    
+    @Override
     public int retrieveBoardAddInfo(CodeParam param) {
     	return codeDao.insertBoardInfo(param);
     }
@@ -147,6 +152,8 @@ public class CodeServiceImpl extends AbstractCommonAPIService<CodeParam> impleme
 			codeDomain = retrieveMemberDeleteInfo(param);
 		} else if ("boardListInfo".contentEquals(serType)) {
 			codeDomain = retrieveBoardListInfo(param);
+		} else if ("boardCountInfo".contentEquals(serType)) {
+			codeDomain = retrieveBoardCountInfo(param);
 		} else if ("boardAddInfo".contentEquals(serType)) {
 			codeDomain = retrieveBoardAddInfo(param);
 		} else if ("boardUpdateInfo".contentEquals(serType)) {
@@ -165,6 +172,8 @@ public class CodeServiceImpl extends AbstractCommonAPIService<CodeParam> impleme
 
 		return resultMap;
 	}
+
+	
 
 	
 

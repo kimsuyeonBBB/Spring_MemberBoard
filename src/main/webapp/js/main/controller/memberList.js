@@ -55,13 +55,12 @@ define(['common','hiballView', 'cookieUtil',
 		var url = new URL(url_string);
 		var pagenum = url.searchParams.get("pagenum");	
 				
-			if(pagenum == null){
-				pagenum = 1;
-			} 
-			else{
+		if(pagenum == null){
+			pagenum = 1;
+		} 
+		else{
 				
-			}		
-			console.log(pagenum);	
+		}		
 			
 		var beginIdx = (pagenum - 1) * 10;
 		var listSize = 10;
