@@ -7,13 +7,26 @@ define(['common','hiballView', 'cookieUtil',
 	var MenuView = HiballView.extend({
 		chainEventHandler:function (collection, data){
 			var result = data.resultMap.memberInfo;
-			console.log(data);
+			var memCnt = data.resultMap.memberCountInfo[0].membercount;
+			var totCnt = Math.ceil(memCnt/10);
+			
 			var template = _.template(MemberList);
 			
+			var url_string = window.location.href;
+			var url = new URL(url_string);
+			var pagenum = url.searchParams.get("pagenum");	
+				
+			if(pagenum == null){
+				pagenum = 1;
+			} 	
+			
 			var model = new Backbone.Model({
-				data:result
+				data:result,
+				pagenum:parseInt(pagenum),
+				totalCount:totCnt
 			});
 				
+
 			$("#content").html(template(model.toJSON()));
 			$("#logoutBtn").on("click", Common.logoutHandler);	
 			$('.removebtn').on('click',deletebtnEventHandler);
@@ -38,13 +51,35 @@ define(['common','hiballView', 'cookieUtil',
 	var configMemberListParams = function(params){
 		var paramArr = new Array();
 		
+		var url_string = window.location.href;
+		var url = new URL(url_string);
+		var pagenum = url.searchParams.get("pagenum");	
+				
+			if(pagenum == null){
+				pagenum = 1;
+			} 
+			else{
+				
+			}		
+			console.log(pagenum);	
+			
+		var beginIdx = (pagenum - 1) * 10;
+		var listSize = 10;
+		
 		var memberInfo = {
 			"serviceName":"codeService","returnName":"memberInfo",
 			"subServiceName":"memberInfo",
+			"sortColumn":"","parameterSet":{beginIdx:beginIdx, listSize:listSize}
+		}
+		
+		var memberCountInfo = {
+			"serviceName":"codeService","returnName":"memberCountInfo",
+			"subServiceName":"memberCountInfo",
 			"sortColumn":"","parameterSet":{}
 		}
 		
 		paramArr.push(memberInfo);
+		paramArr.push(memberCountInfo);
 		
 		return paramArr;
 	}

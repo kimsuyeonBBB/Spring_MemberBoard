@@ -33,8 +33,17 @@ public class CommonDomain implements Serializable {
     private String homeTeamName;
     private String awayTeamName;
     private String position;
+    private int totCnt;
     
-    public String getGameInfoId() {
+    public int getTotCnt() {
+		return totCnt;
+	}
+
+	public void setTotCnt(int totCnt) {
+		this.totCnt = totCnt;
+	}
+
+	public String getGameInfoId() {
 	return gameInfoId;
     }
 

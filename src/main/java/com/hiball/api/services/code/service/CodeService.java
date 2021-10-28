@@ -10,6 +10,7 @@ public interface CodeService {
     public List<CodeDomain> retrievePlayerInfo(CodeParam param);
     public List<CodeDomain> retrieveTeamInfo(CodeParam param);
     public List<CodeDomain> retrieveMemberInfo(CodeParam param);
+    public List<CodeDomain> retrieveMemberCountInfo(CodeParam param);
     public int retrieveMemberAddInfo(CodeParam param);
     public List<CodeDomain> retrieveMemberUpdateInfo(CodeParam param);
     public int retrieveMemberNewUpdateInfo(CodeParam param);

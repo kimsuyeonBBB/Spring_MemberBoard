@@ -11,6 +11,7 @@ public class MemberInfo {
 	private String password;
 	private String createdDate;
 	private Date modifiedDate;
+	private String membercount;
 
 	public int getNo() {
 		return no;
@@ -56,5 +57,11 @@ public class MemberInfo {
 	}
 	public void setModifiedDate(Date modifiedDate) {
 		this.modifiedDate = modifiedDate;
+	}
+	public String getMembercount() {
+		return membercount;
+	}
+	public void setMembercount(String membercount) {
+		this.membercount = membercount;
 	}
 }

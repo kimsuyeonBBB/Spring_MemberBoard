@@ -11,6 +11,7 @@
 		<result column="PWD" property="password"/>
 		<result column="CRE_DATE" property="createdDate"/>
 		<result column="MOD_DATE" property="modifiedDate" javaType="java.sql.Date"/>	
+		<result column="MemberCount" property="membercount"/>
 	</resultMap>
 	
 	<resultMap id="boardResultMap" type="boardInfo">
@@ -101,6 +102,12 @@
 	
 	<select id="selectMemberInfo" parameterType="codeParam" resultMap="memberResultMap">
 		SELECT MNO, MNAME, EMAIL, CRE_DATE
+		  FROM MEM_AD
+		 LIMIT #{beginIdx}, #{listSize}
+	</select>
+	
+	<select id="selectMemberCountInfo" parameterType="codeParam" resultMap="memberResultMap">
+		SELECT COUNT(*) MemberCount
 		  FROM MEM_AD
 	</select>
 	

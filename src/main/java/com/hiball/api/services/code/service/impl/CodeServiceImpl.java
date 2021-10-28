@@ -54,8 +54,14 @@ public class CodeServiceImpl extends AbstractCommonAPIService<CodeParam> impleme
 
     @Override
     public List<CodeDomain> retrieveMemberInfo(CodeParam param) {
+    	//memberInfo totCnt
     	return codeDao.selectMemberInfo(param);
     }
+    
+    @Override
+	public List<CodeDomain> retrieveMemberCountInfo(CodeParam param) {
+		return codeDao.selectMemberCountInfo(param);
+	}
     
     @Override
 	public int retrieveMemberAddInfo(CodeParam param) {
@@ -129,6 +135,8 @@ public class CodeServiceImpl extends AbstractCommonAPIService<CodeParam> impleme
 			codeDomain = retrieveTeamInfo(param);
 		} else if ("memberInfo".contentEquals(serType)) {
 			codeDomain = retrieveMemberInfo(param);
+		} else if ("memberCountInfo".contentEquals(serType)) {
+			codeDomain = retrieveMemberCountInfo(param);
 		} else if ("memberAddInfo".contentEquals(serType)) {
 			codeDomain = retrieveMemberAddInfo(param);
 		} else if ("memberUpdateInfo".contentEquals(serType)) {
@@ -151,16 +159,13 @@ public class CodeServiceImpl extends AbstractCommonAPIService<CodeParam> impleme
 			codeDomain = retrieveFindIdInfo(param);
 		} else if ("findPwInfo".contentEquals(serType)) {
 			codeDomain = retrieveFindPwInfo(param);
-		}
+		} 
 
 		resultMap.put("resultMap", codeDomain);
 
 		return resultMap;
 	}
 
-
-
-
-
+	
 
 }

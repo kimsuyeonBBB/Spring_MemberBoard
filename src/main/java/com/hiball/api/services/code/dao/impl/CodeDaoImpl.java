@@ -35,6 +35,11 @@ public class CodeDaoImpl extends AbstractCommonAPIDao implements CodeDao {
 	public List<CodeDomain> selectMemberInfo(CodeParam param) {
 		return sqlSession.selectList(prefix + "selectMemberInfo", param);
 	}
+	
+	@Override
+	public List<CodeDomain> selectMemberCountInfo(CodeParam param) {
+		return sqlSession.selectList(prefix + "selectMemberCountInfo",param);
+	}
 
 	@Override
 	public int insertMemberInfo(CodeParam param) {
@@ -90,5 +95,6 @@ public class CodeDaoImpl extends AbstractCommonAPIDao implements CodeDao {
 	public List<CodeDomain> selectFindPwInfo(CodeParam param) {
 		return sqlSession.selectList(prefix + "findPwInfo",param);
 	}
+
 
 }

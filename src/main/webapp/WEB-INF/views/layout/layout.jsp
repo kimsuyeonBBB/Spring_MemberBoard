@@ -89,7 +89,7 @@
 		<!-- //New Header -->
 
 		<!-- Contents -->
-		<div style="width:200px; height:700px;border-right:2px solid black; float:left;">
+		<div style="width:200px; height:732px;border-right:2px solid black; float:left;">
 		<a href="memberList" style="font-size:20px; line-height:50px; margin-left:5px;"><i>회원관리</i></a><br>
 		<a href="boardList" style="font-size:20px; line-height:50px; margin-left:5px;"><i>게시판 관리</i></a><br>
 		</div>
@@ -99,6 +99,7 @@
 			<decorator:body></decorator:body>
 		</div>
 		</div>
+		<br><br>
 		<!-- // Contents -->
 		
 		<!-- New Footer -->

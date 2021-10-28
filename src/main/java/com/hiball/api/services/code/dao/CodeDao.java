@@ -11,6 +11,7 @@ public interface CodeDao {
     public List<CodeDomain> selectPlayerInfo(CodeParam param);
     public List<CodeDomain> selectTeamInfo(CodeParam param);
     public List<CodeDomain> selectMemberInfo(CodeParam param);
+    public List<CodeDomain> selectMemberCountInfo(CodeParam param);
     public int insertMemberInfo(CodeParam param);
     public List<CodeDomain> updateMemberInfo(CodeParam param);
     public int updateNewMemberInfo(CodeParam param);
