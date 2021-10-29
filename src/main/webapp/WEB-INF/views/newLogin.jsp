@@ -8,29 +8,29 @@
 </head>
 <body>
 
-<div style="background-color: #5D5D5D; color: #ffffff; font-size: 40px; height: 60px; padding: 5px; valign:middle">Home Page 
-	
-</div>
-<br>
-<div style='margin-left:20px;'>
-<h2>사용자 로그인</h2>
+<div style="background-color: #5D5D5D; color: #ffffff; font-size: 40px; height: 60px; padding: 5px; valign:middle;">Home Page </div>
 <br>
 
-<div class="row">
-<div class="col-1.5">
-<span style='font-size:15px; margin-left:10px;'>ID : <input id="inputId" type="text" name="id" style="width:210px;"></span><br><br>
-<span style='font-size:15px; margin-left:10px;'>Password : <input id="inputPassword" type="password" name="password" style="width:160px;"></span>
-</div>
-<div class="col-1">
-<input id="submit" type="button" value="Login" style="width:60px; height:60px; font-size:13px;">
-</div>
-</div>
-<br>
-<p style='font-size:13px;'><a href='memberAdd'>회원 가입</a><a>&nbsp; / &nbsp;</a><a href='findId'>ID 찾기</a><a>&nbsp; / &nbsp;</a><a href='findPw'>Password 찾기</a></p>
+	<div class="container" style="border:1px solid #cecece; margin-top:130px; width:500px; height:450px;">
+		<div style="margin-left:50px; margin-top:60px;">
+			<h2>사용자 로그인</h2>
+			<br>
 
-</div>
+			<input class="form-control" id="inputId" type="text" name="id" style="width:350px;" placeholder="ID">
+			<br>
+			<input class="form-control" id="inputPassword" type="password" name="password" style="width:350px;" placeholder="Password">
 
-<div style="background-color:#5D5D5D;height:40px;padding:5px;margin-top:700px"></div>
+			<br><br>
+			<input class="btn btn-outline-primary" id="submit" type="button" value="Login" style="width:350px; height: 40px; font-size: 13px;">
+		
+			<br><br><br>
+			<p style='font-size: 15px;'>
+				<a href='memberAdd'>&emsp;회원 가입</a><a>&nbsp;&emsp; / &nbsp;&emsp;</a><a href='findId'>ID 찾기</a><a>&emsp;&nbsp; / &nbsp;&emsp;</a><a href='findPw'>Password 찾기</a>
+			</p>
+		</div>
+	</div>
+
+	<div style="background-color:#5D5D5D;height:40px;padding:5px;margin-top:700px"></div>
 	
 <script>
     

@@ -73,8 +73,14 @@
 
 		<!-- Contents -->
 		<div style="width:200px; height:732px;border-right:2px solid black; float:left;">
-		<a href="memberList" style="font-size:20px; line-height:50px; margin-left:5px;"><i>회원관리</i></a><br>
-		<a href="boardList" style="font-size:20px; line-height:50px; margin-left:5px;"><i>게시판 관리</i></a><br>
+		<ul class="nav flex-column">
+			<li class="nav-item">
+				<a class="nav-link" href="memberList" style="font-size:20px; line-height:50px; margin-left:5px;"><i>회원관리</i></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="boardList" style="font-size:20px; line-height:50px; margin-left:5px;"><i>게시판 관리</i></a>
+			</li>
+		</ul>
 		</div>
 		
 		<div style="width:700px; height:500px; float:left; margin-left:10px">
