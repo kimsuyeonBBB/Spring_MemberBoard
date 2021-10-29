@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>영상 조회 시스템</title>
+	<title>회원 관리 페이지</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 minimum-scale=1" />
 	<%
@@ -29,26 +29,9 @@
 	<link rel="stylesheet" type="text/css" media="screen" href="<%=context %>/assets/video/video-js.css"/>
 	<script src="https://kit.fontawesome.com/2cb4ce65ff.js"></script>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script>
-	var userAgent = navigator.userAgent.toLowerCase(); // 접속 핸드폰 정보 
-	// 모바일 홈페이지 바로가기 링크 생성 
-	if (userAgent.match('iphone') == 'iphone') {
-	    document.write('<meta name="apple-mobile-web-app-capable" content="yes">');
-		document.write('<link rel="apple-touch-icon" type="image/png" sizes="72*72" href="<%=context %>/assets/images/h_icon_iphone.png?ver=<%=version%>" />')
-	} else if (userAgent.match('ipad') == 'ipad') {
-	    document.write('<meta name="apple-mobile-web-app-capable" content="yes">');
-		document.write('<link rel="shourtcut icon" type="image/png" sizes="72*72" href="<%=context %>/assets/images/h_icon_iphone.png?ver=<%=version%>" />')
-	} else if (userAgent.match('ipod') == 'ipod') {
-	    document.write('<meta name="apple-mobile-web-app-capable" content="yes">');
-		document.write('<link rel="apple-touch-icon" type="image/png" sizes="72*72" href="<%=context %>/assets/images/h_icon_iphone.png?ver=<%=version%>" />')
-	} else if (userAgent.match('android') == 'android') {
-		document.write('<meta name="mobile-web-app-capable" content="yes">');
-		document.write("<link rel='icon' type='image/png' sizes='192x192' href='<%=context %>/assets/images/h_icon.png?ver=<%=version%>' />")
-	} else {
-		document.write('<meta name="mobile-web-app-capable" content="yes">');
-		document.write("<link rel='icon' type='image/png' sizes='192x192' href='<%=context %>/assets/images/h_icon.png?ver=<%=version%>' />")
-	}
-	</script>
+	
+	<link rel="icon" type="image/png" sizes="72*72" href="<%=context %>/assets/images/410GPhKeg-L2.png" />
+	
 </head> 
 <body>
 	<div id="layout_main" class="container-fluid layout_container">
