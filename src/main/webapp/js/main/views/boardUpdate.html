@@ -6,13 +6,14 @@
 </head>
 <body>
 
-	<div style="width: 700px; height: 500px; float: left; margin-left: 10px">
+	<div style="width: 1200px; height: 500px; float: left; margin-left: 10px">
 		<h2>게시글 수정</h2>
-
+		<br>
+		
 		<div class="form-group">
 			<div style='float: left; font-size: 15px;'>번호 : &nbsp;</div>
 			<div>
-			<textarea class="form-control" id="postNo" type='text' name='no' style='width: 500px; height: 30px; float: left;' readonly><%=data.no%></textarea>
+			<textarea class="form-control" id="postNo" type='text' name='no' style='width: 800px; height: 35px; float: left; resize:none;' readonly><%=data.no%></textarea>
 			</div>
 			<br><br>
 		</div>
@@ -20,7 +21,7 @@
 		<div class="form-group">
 			<div style='float: left; font-size: 15px;'>제목 : &nbsp;</div>
 			<div>
-				<textarea class="form-control" id="postTitle" type='text' name='title' style='width: 500px; height: 30px; float: left;'><%=data.title%></textarea>
+				<textarea class="form-control" id="postTitle" type='text' name='title' style='width: 800px; height: 35px; float: left; resize:none;'><%=data.title%></textarea>
 			</div>
 			<br><br>
 		</div>
@@ -28,11 +29,11 @@
 		<div class="form-group">
 			<div style='float: left; font-size: 15px;'>내용 : &nbsp;</div>
 			<div>
-				<textarea class="form-control" id="postStory" type='text' name='story' style='margin-top: 10px; width: 500px; height: 200px;'><%=data.story%></textarea>
+				<textarea class="form-control" id="postStory" type='text' name='story' style='margin-top: 10px; width: 800px; height: 480px; resize:none;'><%=data.story%></textarea>
 			</div>
 		</div>
 
-		<input class="btn btn-outline-primary" id="postUpdateBtn" type='button' value='완료'style='margin-left: 390px; margin-top: 10px; width: 50px; height: 30px; font-size: 13px;'> 
+		<input class="btn btn-outline-primary" id="postUpdateBtn" type='button' value='완료'style='margin-left: 690px; margin-top: 10px; width: 50px; height: 30px; font-size: 13px;'> 
 		<input class="btn btn-outline-secondary" id="removePostBtn" type='button' value='삭제' rel="<%=data.no%>" style="margin-top: 10px; width: 50px; height: 30px; font-size: 13px;"> 
 		<input class="btn btn-outline-secondary" type='button' value='취소' onclick='location.href="boardList"' style="margin-top: 10px; width: 50px; height: 30px; font-size: 13px;">
 	</div>

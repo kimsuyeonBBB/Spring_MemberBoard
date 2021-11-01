@@ -65,14 +65,14 @@
 		
 		<!-- New Header -->
 		<div style="background-color: #5D5D5D; color: #ffffff; font-size: 40px; height: 70px; padding: 5px; valign:middle">Home Page 
-		<span style="float: right; font-size: 20px; margin-top: 20px"> <span id="getUserName"><%=userName %></span>
-				<a id="logoutBtn" style="color: white; font-size:15px; cursor:pointer;">(로그아웃)</a>
+		<span style="float: right; font-size: 25px; margin-top: 25px"> <span id="getUserName"><%=userName %></span>님
+				<a id="logoutBtn" style="color: white; font-size:20px; cursor:pointer;">(로그아웃)</a>
 		</span>
 		</div>
 		<!-- //New Header -->
 
 		<!-- Contents -->
-		<div style="width:200px; height:925px;border-right:2px solid black; float:left;">
+		<div style="width:230px; height:925px;border-right:2px solid black; float:left;">
 		<ul class="nav flex-column">
 			<li class="nav-item">
 				<a class="nav-link" href="memberList" style="font-size:20px; line-height:50px; margin-left:5px;"><i>회원관리</i></a>
@@ -83,7 +83,7 @@
 		</ul>
 		</div>
 		
-		<div style="width:1000px; height:500px; float:left; margin-left:10px">
+		<div style="width:1000px; height:500px; float:left; margin-left:30px">
 		<div class="row layout_row">
 			<decorator:body></decorator:body>
 		</div>
