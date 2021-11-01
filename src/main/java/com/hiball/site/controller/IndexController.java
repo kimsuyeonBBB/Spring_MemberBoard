@@ -114,17 +114,44 @@ public class IndexController extends CommonController {
     	return mav;
     }
     
-    private User getUserAuthorization() {
-    	User user = null;
-    	SecurityContext sc = SecurityContextHolder.getContext();
-    	Authentication auth = sc.getAuthentication();
-    	
-    	if (auth != null) {
-    		user = (User) auth.getPrincipal();
-    	}
-    	
-    	return user;
+    @RequestMapping (value="gameCriteria", method=RequestMethod.GET) 
+    public ModelAndView selectMode(HttpServletRequest req) {
+	logger.debug("##### Select Game Criteria{} #####", req.getContextPath());
+	ModelAndView mav = new ModelAndView();
+	User user = getUserAuthorization();
+	//logger.info("{}", LoggingUtils.makeLoggingInfo(user, "criteria"));
+	System.out.println("gameCriteria123123");
+	mav.addObject("user", user);
+	mav.setViewName("index");
+	
+	return mav;
     }
+    
+    @RequestMapping(value="gameList", method=RequestMethod.GET)
+    public ModelAndView gameList(HttpServletRequest req) {
+	logger.debug("######### Game List{} ##########", req.getContextPath());
+	ModelAndView mav = new ModelAndView();
+	User user = getUserAuthorization();
+	//logger.info("{}", LoggingUtils.makeLoggingInfo(user, "gameList"));
+	
+	mav.addObject("user", user);
+	mav.setViewName("index");
+	
+	return mav;
+    }
+    
+	@RequestMapping(value = "videoList", method = RequestMethod.GET)
+	public ModelAndView videoList(HttpServletRequest req) {
+		logger.debug("######### Video List{} ##########", req.getContextPath());
+		ModelAndView mav = new ModelAndView();
+		User user = getUserAuthorization();
+		// logger.info("{}", LoggingUtils.makeLoggingInfo(user, "videoList"));
+
+		mav.addObject("user", user);
+		mav.setViewName("index");
+
+		return mav;
+	}
     
     @RequestMapping(value = "login", method = RequestMethod.GET)
     public String login() {
@@ -138,5 +165,16 @@ public class IndexController extends CommonController {
     	return "error";
     }
     
+    private User getUserAuthorization() {
+    	User user = null;
+    	SecurityContext sc = SecurityContextHolder.getContext();
+    	Authentication auth = sc.getAuthentication();
+    	
+    	if (auth != null) {
+    		user = (User) auth.getPrincipal();
+    	}
+    	
+    	return user;
+    }
 
 }

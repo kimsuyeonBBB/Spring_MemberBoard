@@ -67,7 +67,12 @@
 		<div style="background-color: #5D5D5D; color: #ffffff; font-size: 40px; height: 70px; padding: 5px; valign:middle">Home Page 
 		<span style="float: right; font-size: 25px; margin-top: 25px"> <span id="getUserName"><%=userName %></span>님
 				<a id="logoutBtn" style="color: white; font-size:20px; cursor:pointer;">(로그아웃)</a>
+				<select id="useLang">
+					<option value="kr">한국어</option>
+					<option value="en">English</option>
+				</select>
 		</span>
+		
 		</div>
 		<!-- //New Header -->
 
@@ -75,10 +80,13 @@
 		<div style="width:230px; height:925px;border-right:2px solid black; float:left;">
 		<ul class="nav flex-column">
 			<li class="nav-item">
-				<a class="nav-link" href="memberList" style="font-size:20px; line-height:50px; margin-left:5px;"><i>회원관리</i></a>
+				<a class="nav-link" href="memberList" style="font-size:20px; line-height:50px; margin-left:5px;"><i>회원 관리</i></a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="boardList" style="font-size:20px; line-height:50px; margin-left:5px;"><i>게시판 관리</i></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="gameCriteria" style="font-size:20px; line-height:50px; margin-left:5px;"><i>영상 관리</i></a>
 			</li>
 		</ul>
 		</div>
