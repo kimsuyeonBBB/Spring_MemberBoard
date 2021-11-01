@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<div style="background-color: #5D5D5D; color: #ffffff; font-size: 40px; height: 60px; padding: 5px; valign:middle;">Home Page </div>
+<div style="background-color: #5D5D5D; color: #ffffff; font-size: 40px; height: 70px; padding: 5px; valign:middle;">Home Page </div>
 <br>
 
 	<div class="container" style="border:1px solid #cecece; margin-top:130px; width:500px; height:450px;">
@@ -30,7 +30,7 @@
 		</div>
 	</div>
 
-	<div style="background-color:#5D5D5D;height:40px;padding:5px;margin-top:700px"></div>
+	<div style="background-color:#5D5D5D;height:50px;padding:5px; bottom:0; position:fixed; width:100%;"></div>
 	
 <script>
     

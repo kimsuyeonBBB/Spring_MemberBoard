@@ -8,14 +8,20 @@
 </style>
 </head>
 <body>
-<h2 style="margin-left:10px;">회원가입</h2><br>
-<div style="margin-left:10px;">
-<div>이름 : <input id='userName' type='text' name='name' style='width:200px;'></div>
-<div>이메일 : <input id='userEmail' type='text' name='email' style='margin-top:10px;width:185px;'></div>
-<div>ID : <input id='userId' type='text' name='id' style='margin-top:10px;width:210px;'></div>
-<div>Password : <input id='userPwd' type='password' name='password' style='margin-top:10px; width:160px;'></div>
-<input id='addbtn' type='button' value='완료' style='margin-top:10px; width:40px; height:25px; font-size:12px;'>
-<input type='button' value='취소' onclick='location.href="login"' style="width:40px; height:25px; font-size:12px;">
-</div>
+
+	<div class="container" style="border: 1px solid #cecece; margin-top: 120px; width: 500px; height: 500px;">
+		<div style="margin-left: 50px; margin-top: 50px;">
+			<h2>회원가입</h2>
+			<br>
+			<input class="form-control" id='userName' type='text' name='name' style='width: 350px;' placeholder="Name">
+			<input class="form-control" id='userEmail' type='text' name='email' style='margin-top: 10px; width: 350px;' placeholder="Email">
+			<input class="form-control" id='userId' type='text' name='id' style='margin-top: 10px; width: 350px;' placeholder="ID">
+			<input class="form-control" id='userPwd' type='password' name='password' style='margin-top: 10px; width: 350px;' placeholder="Password"><br>
+			<input class="btn btn-outline-primary" id='addbtn' type='button' value='완료'style='margin-top: 10px; width: 350px; height: 40px; font-size: 12px;'><br>
+			<input class="btn btn-outline-secondary" type='button' value='취소' onclick='location.href="login"' style="width: 350px; height: 40px; font-size: 12px; margin-top:10px;">
+		</div>
+	</div>
+
+
 </body>
 </html>

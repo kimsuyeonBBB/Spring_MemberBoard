@@ -6,22 +6,26 @@
 </head>
 <body>
 
-<div style="width:700px; height:500px; float:left; margin-left:10px">
-<h2>게시글 작성</h2>
+	<div style="width: 700px; height: 500px; float: left; margin-left: 10px">
+		<h2>게시글 작성</h2>
+		<div class="form-group">
+			<div style='float: left; font-size: 15px;'>제목 : &nbsp;</div>
+			<div>
+				<textarea class="form-control" id="postTitle" type='text' name='title' style='width: 500px; height: 30px; float: left;'></textarea>
+			</div>
+			<br><br>
+		</div>
 
-<div class="form-group">
-<div style='float:left; font-size:15px;'> 제목 : &nbsp;</div> <div><textarea class="form-control" id="postTitle" type='text' name='title' style='width:500px;height:30px; float:left;'></textarea></div><br><br>
-</div>
+		<div class="form-group">
+			<div style='float: left; font-size: 15px;'>내용 : &nbsp;</div>
+			<div>
+				<textarea class="form-control" id="postStory" type='text' name='story' style='margin-top: 10px; width: 500px; height: 200px;'></textarea>
+			</div>
+		</div>
 
-<div class="form-group">
-<div style='float:left; font-size:15px;'> 내용 : &nbsp;</div> <div><textarea class="form-control" id="postStory" type='text' name='story' style='margin-top:10px; width:500px; height:200px;'></textarea></div><br>
-</div>
-
-<input class="btn btn-primary" id="addpost" type='button' value='등록' style='margin-left:440px; width:50px; height:30px; font-size:13px;'>
-
-<input class="btn btn-light" type='button' value='취소' onclick='location.href="boardList"' style="width:50px; height:30px; font-size:13px;">
-
-</div>
+		<input class="btn btn-outline-primary" id="addpost" type='button' value='등록' style='margin-left: 440px; width: 50px; height: 30px; font-size: 13px;'>
+		<input class="btn btn-outline-secondary" type='button' value='취소' onclick='location.href="boardList"' style="width: 50px; height: 30px; font-size: 13px;">
+	</div>
 
 </body>
 </html>

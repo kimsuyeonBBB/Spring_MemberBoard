@@ -56,22 +56,22 @@
 		<!-- //header -->
 		
 		<!-- New Header -->
-		<div style="background-color: #5D5D5D; color: #ffffff; font-size: 40px; height: 60px; padding: 5px; valign:middle">Home Page 
+		<div style="background-color: #5D5D5D; color: #ffffff; font-size: 40px; height: 70px; padding: 5px; valign:middle">Home Page 
 
 		</div>
 		<!-- //New Header -->
 
 		<!-- Contents -->
 		
-		<div style="width:1200px; height:600px; float:left; margin-left:10px">
-		<div class="row layout_row">
+		
+		<div>
 			<decorator:body></decorator:body>
 		</div>
-		</div>
+		
 		<!-- // Contents -->
 		
 		<!-- New Footer -->
-		<div style="background-color:#5D5D5D;height:40px;padding:5px;margin-top:700px"></div>
+		<div style="background-color:#5D5D5D;height:50px;padding:5px; bottom:0; position:fixed; width:100%;"></div>
 		<!-- //New Footer -->
 		
 		<!-- footer -->

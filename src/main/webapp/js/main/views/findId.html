@@ -5,15 +5,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div style='margin-left:10px;'>
-<h2>ID 찾기</h2>
-<br>
-<div style="font-size:15px;">이름 : <input id='findId_name' type='text' name='name' style='width:200px;'></div>
-<div style="font-size:15px;">이메일 : <input id='findId_email' type='text' name='email' style='margin-top:10px;width:185px;'></div>
-<input id="findIdBtn" type='button' value='확인' style='margin-top:10px; width:40px; height:25px; font-size:12px;'>
-<input type='button' value='취소' onclick='location.href="login"' style='margin-top:10px; width:40px; height:25px; font-size:12px;'>
-</div>
 
+	<div class="container" style="border: 1px solid #cecece; margin-top: 120px; width: 500px; height: 400px;">
+		<div style="margin-left: 50px; margin-top: 50px;">
+			<h2>ID 찾기</h2>
+			<br>
+			<div style="font-size: 15px;">
+				<input class="form-control" id='findId_name' type='text' name='name' style='width: 350px;' placeholder="Name">
+			</div>
+			<div style="font-size: 15px;">
+				<input class="form-control" id='findId_email' type='text' name='email' style='margin-top: 10px; width: 350px;' placeholder="Email">
+			</div>
+			<br>
+			<input class="btn btn-outline-primary" id="findIdBtn" type='button' value='확인' style='margin-top: 10px; width: 350px; height: 40px; font-size: 12px;'>
+			<input class="btn btn-outline-secondary" type='button' value='취소' onclick='location.href="login"' style='margin-top: 10px; width: 350px; height: 40px; font-size: 12px;'>
+		</div>
+	</div>
 
 </body>
 </html>
