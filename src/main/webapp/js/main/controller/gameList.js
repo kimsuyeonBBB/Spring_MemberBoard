@@ -92,13 +92,13 @@ define(['common', 'hiballView', 'cookieUtil',
 		var width = window.innerWidth;
 		var height = window.innerHeight;
 		
-		$("#gameListWrap").height(height-160);
+		$("#gameListWrap").height(height-400);
 	}
 	
 	var configContentsSize = function () {
 		var width = window.innerWidth;
 		var height = window.innerHeight;
-		$("#content").height(height-80);
+		$("#content").height(height-110);
 	}
 	
 	var retrievedGames = null;

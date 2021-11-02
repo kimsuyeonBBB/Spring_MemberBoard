@@ -124,7 +124,7 @@
 }
 
 .game-list-wrap .game-list .empty-table {
-	height:100%;
+	height:50%;
 }
 .game-list-wrap .game-list .empty-table td{
 	background-color:#f7fff5;
