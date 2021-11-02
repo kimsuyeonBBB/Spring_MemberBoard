@@ -11,9 +11,9 @@
 <div style="background-color: #5D5D5D; color: #ffffff; font-size: 40px; height: 70px; padding: 5px; valign:middle;">Home Page </div>
 <br>
 
-	<div class="container" style="border:1px solid #cecece; margin-top:130px; width:500px; height:450px;">
-		<div style="margin-left:50px; margin-top:60px;">
-			<h2>사용자 로그인</h2>
+	<div class="container" style="border:1px solid #cecece; margin-top:130px; width:500px; height:450px; display: flex; justify-content: center; align-items: center;">
+		<div>
+			<h2 style="text-align:center;">사용자 로그인</h2>
 			<br>
 
 			<input class="form-control" id="inputId" type="text" name="id" style="width:350px;" placeholder="ID">
